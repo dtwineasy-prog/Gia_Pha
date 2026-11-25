@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Gia phả họ Nguyễn Đình</title>
+  <title>Gia phả họ Đoàn</title>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Cormorant+Garamond:wght@500;600;700&display=swap">
@@ -799,7 +799,7 @@
 <body>
   <header>
     <div class="hd">
-      <a class="brand" href="#/home"><span class="seal">Ng</span><span>Họ Nguyễn Đình</span></a>
+      <a class="brand" href="#/home"><span class="seal">Ng</span><span>Họ Đoàn</span></a>
       <div class="sbox"><input id="q" type="search" placeholder="Tìm tên, nơi ở, năm sinh…" autocomplete="off"
           aria-label="Tìm kiếm">
         <div id="sug" class="sug" hidden></div>
@@ -931,13 +931,13 @@
       const ev = evAll().filter(e => e[1] >= todayS()).slice(0, 3);
       const rec = [...live()].sort((a, b) => b.upd < a.upd ? -1 : 1).slice(0, 6);
       const gens = new Set(live().map(p => p.gen)).size;
-      return `<section class="hero"><div class="in"><div><h1>Gia phả họ Nguyễn Đình, chi Kẻ Sặt</h1><p style="font-size:18px;max-width:46ch">Sáu thế hệ con cháu theo dòng cha, từ cụ Khoan ở Nam Định đến những người trẻ hôm nay. Tra cứu, bổ sung và gìn giữ cho đời sau.</p><div class="row"><a class="btn" href="#/members">Tra cứu thành viên</a><a class="btn alt" href="#/tree/${S.me}">Xem cây gia phả</a></div></div>
+      return `<section class="hero"><div class="in"><div><h1>Gia phả họ Đoàn, chi Kẻ Sặt</h1><p style="font-size:18px;max-width:46ch">Sáu thế hệ con cháu theo dòng cha, từ cụ Khoan ở Nam Định đến những người trẻ hôm nay. Tra cứu, bổ sung và gìn giữ cho đời sau.</p><div class="row"><a class="btn" href="#/members">Tra cứu thành viên</a><a class="btn alt" href="#/tree/${S.me}">Xem cây gia phả</a></div></div>
  <div><p class="mut" style="margin:0 0 8px">Dòng cha của bạn</p><ol class="chain">${ch.map(p => `<li class="${p.id === S.me ? 'me' : ''}"><a href="#/person/${p.id}" style="text-decoration:none;color:inherit"><b>${esc(p.name)}</b> <small class="mut">Đời ${p.gen}, ${life(p)}</small></a></li>`).join('')}</ol></div></div></section>
  <div class="wrap">${!P(S.me) || (P(S.me).bio || '').length > 10 ? '' : '<div class="ban">Hồ sơ của bạn còn thiếu thông tin. <a href="#/person/' + S.me + '">Bổ sung hồ sơ của bạn</a></div>'}
  <div class="stats"><div><b>${live().length}</b>thành viên</div><div><b>${gens}</b>thế hệ</div><div><b>${live().filter(p => p.gr).length}</b>phần mộ có tọa độ</div><div><b>${evAll().filter(e => e[1] >= todayS()).length}</b>sự kiện sắp tới</div></div>
  <h2 style="margin-top:28px">Sự kiện sắp tới</h2><div class="grid">${ev.map(evCard).join('')}</div>
  <h2 style="margin-top:28px">Mới cập nhật</h2><div class="grid">${rec.map(card).join('')}</div></div>
- <footer class="wrap mut" style="border-top:1px solid var(--line);margin-top:30px"><small>Gia phả nội bộ họ Nguyễn Đình. Liên hệ quản trị: an.admin@giapha.vn. Dữ liệu chỉ dành cho thành viên đã được cấp tài khoản. Phiên bản demo 1.0</small></footer>`}
+ <footer class="wrap mut" style="border-top:1px solid var(--line);margin-top:30px"><small>Gia phả nội bộ họ Đoàn. Liên hệ quản trị: an.admin@giapha.vn. Dữ liệu chỉ dành cho thành viên đã được cấp tài khoản. Phiên bản demo 1.0</small></footer>`}
     function evCard(e) {const [y, m, d] = e[1].split('-').map(Number); return `<div class="card ev"><div class="d">${d}<small>Tháng ${m}</small></div><div><b>${esc(e[0])}</b><br><small class="mut">${d}/${m}/${y}${e[2] ? ' · ' + esc(e[2]) : ''}</small>${e[5] ? `<br><small>${esc(e[5])}</small>` : ''}<br><span class="chip">${e[3]}</span></div></div>`}
 
     /* ===== CÂY GIA PHẢ (TỔ TIÊN) ===== */
