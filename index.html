@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Gia phả họ Nguyễn Đình</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Cormorant+Garamond:wght@500;600;700&display=swap">
+  <style>
+    :root {
+      --bg: #FAF7F1;
+      --red: #8C2F2F;
+      --gold: #B98A3B;
+      --ink: #22201D;
+      --mute: #6B655D;
+      --line: #E4DCCC;
+      --ok: #2E7D4F;
+      --warn: #B7791F;
+      --err: #B3261E;
+      --card: #fff;
+      --tint: #F3ECDD;
+      --serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+      --sans: 'Be Vietnam Pro', Inter, 'Noto Sans', system-ui, sans-serif
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.6 var(--sans);
+      padding-bottom: 70px
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 700;
+      line-height: 1.15;
+      margin: 0 0 .5em;
+      color: var(--red)
+    }
+
+    h1 {
+      font-size: 34px
+    }
+
+    h2 {
+      font-size: 26px
+    }
+
+    h3 {
+      font-size: 20px
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+      color: inherit
+    }
+
+    button {
+      cursor: pointer
+    }
+
+    a {
+      color: var(--red)
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line)
+    }
+
+    .hd {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 16px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font: 700 21px var(--serif);
+      color: var(--red);
+      white-space: nowrap
+    }
+
+    .seal {
+      width: 36px;
+      height: 36px;
+      background: var(--red);
+      color: #F6E7C1;
+      display: grid;
+      place-items: center;
+      border-radius: 4px;
+      font: 700 20px var(--serif)
+    }
+
+    .sbox {
+      position: relative;
+      flex: 1;
+      max-width: 420px;
+      margin-left: auto
+    }
+
+    .sbox input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: #fff
+    }
+
+    .sug {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 46px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px #0002;
+      max-height: 70vh;
+      overflow: auto
+    }
+
+    .sug button {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      width: 100%;
+      text-align: left;
+      border: 0;
+      background: none;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .sug small,
+    .mut {
+      color: var(--mute)
+    }
+
+    small {
+      font-size: 14px
+    }
+
+    nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-top: 1px solid var(--line);
+      display: flex;
+      z-index: 20;
+      overflow-x: auto
+    }
+
+    nav a {
+      flex: 1;
+      min-width: 64px;
+      text-align: center;
+      padding: 8px 4px;
+      font-size: 13px;
+      text-decoration: none;
+      color: var(--mute);
+      border-top: 3px solid transparent
+    }
+
+    nav a.on {
+      color: var(--red);
+      border-top-color: var(--red);
+      font-weight: 600
+    }
+
+    nav a b {
+      display: block;
+      font-size: 19px;
+      font-weight: 400
+    }
+
+    .role {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 6px;
+      background: #fff;
+      max-width: 110px
+    }
+
+    .btn {
+      display: inline-block;
+      border: 1px solid var(--red);
+      background: var(--red);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500
+    }
+
+    .btn.alt {
+      background: none;
+      color: var(--red)
+    }
+
+    .btn.sm {
+      padding: 6px 12px;
+      font-size: 14px
+    }
+
+    .btn.dng {
+      background: var(--err);
+      border-color: var(--err)
+    }
+
+    .btn:disabled {
+      opacity: .5
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px
+    }
+
+    .grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr
+    }
+
+    .av {
+      flex: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #F2D9D2;
+      color: var(--red);
+      font: 700 17px var(--serif);
+      border: 2px solid var(--gold)
+    }
+
+    .av.f {
+      background: #EFE3C4;
+      color: #7A5B1E
+    }
+
+    .av.x {
+      background: #ECE8E0;
+      color: var(--mute);
+      border-color: var(--line)
+    }
+
+    .av.lg {
+      width: 96px;
+      height: 96px;
+      font-size: 34px
+    }
+
+    .pc {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      text-align: left;
+      width: 100%;
+      cursor: pointer
+    }
+
+    .chip {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 14px;
+      background: var(--tint);
+      font-size: 13px;
+      margin: 2px 4px 2px 0;
+      border: 1px solid var(--line)
+    }
+
+    .chip.on {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red)
+    }
+
+    .hero {
+      display: grid;
+      gap: 20px;
+      padding: 28px 16px;
+      background: linear-gradient(var(--tint), var(--bg));
+      border-bottom: 1px solid var(--line)
+    }
+
+    .hero .in {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 24px;
+      width: 100%
+    }
+
+    .chain {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0 14px;
+      border-left: 2px solid var(--gold)
+    }
+
+    .chain li {
+      position: relative;
+      padding: 4px 0 4px 16px
+    }
+
+    .chain li::before {
+      content: '';
+      position: absolute;
+      left: -22px;
+      top: 14px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold)
+    }
+
+    .chain li.me::before {
+      background: var(--red);
+      box-shadow: 0 0 0 4px #8C2F2F33
+    }
+
+    .chain b {
+      font-family: var(--serif);
+      font-size: 19px
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px
+    }
+
+    .stats div {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 14px
+    }
+
+    .stats b {
+      font: 700 28px var(--serif);
+      color: var(--red);
+      display: block;
+      line-height: 1.1
+    }
+
+    .tree {
+      overflow: auto;
+      padding: 24px 10px 10px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      min-height: 320px;
+      cursor: grab;
+      touch-action: pan-x pan-y pinch-zoom
+    }
+
+    .tz {
+      display: inline-flex;
+      min-width: 100%;
+      justify-content: center;
+      transform-origin: top center;
+      transition: transform .15s
+    }
+
+    .br {
+      display: flex;
+      flex-direction: column;
+      align-items: center
+    }
+
+    .ps {
+      display: flex;
+      gap: 14px;
+      align-items: flex-end
+    }
+
+    .ps>.br {
+      position: relative;
+      padding-bottom: 16px
+    }
+
+    .ps>.br::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      height: 16px;
+      border-left: 2px solid var(--gold)
+    }
+
+    .ps>.br::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-top: 2px solid var(--gold)
+    }
+
+    .ps>.br:first-child::after {
+      left: 50%
+    }
+
+    .ps>.br:last-child::after {
+      right: 50%
+    }
+
+    .st {
+      height: 16px;
+      border-left: 2px solid var(--gold)
+    }
+
+    .nd {
+      width: 116px;
+      text-align: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 8px 4px;
+      display: block;
+      font-size: 14px;
+      line-height: 1.3
+    }
+
+    .nd .av {
+      margin: 0 auto 4px
+    }
+
+    .nd.me {
+      border: 2px solid var(--red);
+      background: #FBEFEA
+    }
+
+    .nd.vr {
+      border-style: dashed;
+      color: var(--mute);
+      background: var(--bg)
+    }
+
+    .nd small {
+      display: block;
+      color: var(--mute);
+      font-size: 12px
+    }
+
+    .sheet {
+      position: fixed;
+      z-index: 30;
+      background: #fff;
+      box-shadow: 0 -8px 30px #0003;
+      padding: 18px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 18px 18px 0 0;
+      max-height: 70vh;
+      overflow: auto;
+      animation: up .2s
+    }
+
+    @keyframes up {
+      from {
+        transform: translateY(40px);
+        opacity: 0
+      }
+    }
+
+    .tabs {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--line);
+      margin: 16px 0
+    }
+
+    .tabs button {
+      border: 0;
+      background: none;
+      padding: 10px 14px;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      color: var(--mute)
+    }
+
+    .tabs button.on {
+      color: var(--red);
+      border-color: var(--red);
+      font-weight: 600
+    }
+
+    dl {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 8px 12px;
+      margin: 0
+    }
+
+    dt {
+      color: var(--mute)
+    }
+
+    dd {
+      margin: 0
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px
+    }
+
+    td,
+    th {
+      padding: 8px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top
+    }
+
+    .tw {
+      overflow-x: auto
+    }
+
+    input,
+    select,
+    textarea {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 9px 12px;
+      background: #fff;
+      width: 100%
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      color: var(--mute);
+      margin-top: 10px
+    }
+
+    .fg {
+      display: grid;
+      gap: 0 12px;
+      grid-template-columns: 1fr
+    }
+
+    .mask {
+      position: fixed;
+      inset: 0;
+      background: #0006;
+      z-index: 40;
+      display: grid;
+      place-items: center;
+      padding: 12px
+    }
+
+    .modal {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      max-width: 560px;
+      width: 100%;
+      max-height: 90vh;
+      overflow: auto
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 84px;
+      transform: translateX(-50%);
+      background: var(--ink);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 24px;
+      z-index: 50
+    }
+
+    .empty {
+      text-align: center;
+      padding: 36px 12px;
+      color: var(--mute)
+    }
+
+    .gen {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      width: 100%;
+      text-align: left
+    }
+
+    .gen .n {
+      font: 700 30px var(--serif);
+      color: var(--gold);
+      width: 44px
+    }
+
+    .ev {
+      display: flex;
+      gap: 14px;
+      align-items: center
+    }
+
+    .ev .d {
+      flex: none;
+      width: 58px;
+      text-align: center;
+      background: var(--red);
+      color: #fff;
+      border-radius: 8px;
+      padding: 4px;
+      font: 700 22px/1.1 var(--serif)
+    }
+
+    .ev .d small {
+      display: block;
+      font: 12px var(--sans)
+    }
+
+    .ph {
+      aspect-ratio: 1;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 8px;
+      font-size: 13px;
+      color: #fff
+    }
+
+    .ban {
+      background: #FFF6E0;
+      border: 1px solid var(--warn);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 14px
+    }
+
+    .ok {
+      color: var(--ok)
+    }
+
+    .er {
+      color: var(--err)
+    }
+
+    @media(min-width:768px) {
+      h1 {
+        font-size: 44px
+      }
+
+      h2 {
+        font-size: 30px
+      }
+
+      .grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .fg {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .hero .in {
+        grid-template-columns: 1.2fr 1fr;
+        align-items: center
+      }
+
+      .stats {
+        grid-template-columns: repeat(4, 1fr)
+      }
+
+      .hero {
+        padding: 48px 16px
+      }
+    }
+
+    @media(min-width:1024px) {
+      body {
+        padding-bottom: 0
+      }
+
+      nav {
+        position: static;
+        border: 0;
+        background: none;
+        max-width: 1100px;
+        margin: 0 auto;
+        overflow: visible
+      }
+
+      nav a {
+        flex: none;
+        padding: 8px 14px;
+        border-top: 0;
+        border-bottom: 3px solid transparent
+      }
+
+      nav a.on {
+        border-bottom-color: var(--red)
+      }
+
+      nav a b {
+        display: none
+      }
+
+      .grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+
+      .sheet {
+        left: auto;
+        top: 70px;
+        bottom: 0;
+        width: 360px;
+        border-radius: 0;
+        max-height: none;
+        box-shadow: -6px 0 24px #0002
+      }
+
+      .toast {
+        bottom: 24px
+      }
+
+      header {
+        padding-bottom: 0
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      * {
+        animation: none !important;
+        transition: none !important
+      }
+    }
+
+    body:not(.in) .sbox,
+    body:not(.in) #who,
+    body:not(.in) #out {
+      display: none
+    }
+
+    @media(max-width:767px) {
+      #who {
+        display: none
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="hd">
+      <a class="brand" href="#/home"><span class="seal">Ng</span><span>Họ Nguyễn Đình</span></a>
+      <div class="sbox"><input id="q" type="search" placeholder="Tìm tên, nơi ở, năm sinh…" autocomplete="off"
+          aria-label="Tìm kiếm">
+        <div id="sug" class="sug" hidden></div>
+      </div>
+      <span id="who" class="chip"></span><button id="out" class="btn sm alt" onclick="logout()">Đăng xuất</button>
+    </div>
+    <nav id="nav"></nav>
+  </header>
+  <main id="app"></main>
+  <div id="ov"></div>
+  <script>
+    /* ===== CẤU HÌNH SUPABASE: điền 2 giá trị này (Project Settings > API) ===== */
+    const SUPABASE_URL = 'https://supabase.com/dashboard/project/grdebmsoqpyogzuxjgwt', SUPABASE_KEY = 'sb_publishable_sGgwfxX4y89rUGU13NxEug_g6sDodQG';
+    const NEEDPW = /type=(invite|recovery)/.test(location.hash);
+    /* ===== DỮ LIỆU MẪU (chỉ dùng cho nút Nạp dữ liệu mẫu) ===== */
+    const KEY = 'giapha-demo-v2';
+    const SEED = [
+      [1, 'Nguyễn Đình Khoan', 'Tự Hậu', 'M', 1862, 1928, 'Nam Định', 'Nho sĩ, dạy học', 1, 0, 0, 2, 'Cụ Khoan là người khai mở chi họ tại làng Kẻ Sặt, mở lớp dạy chữ Nho cho con em trong vùng. Cụ để lại bộ gia huấn dặn con cháu giữ nếp hiếu học.', ['Mộ cụ Khoan', 'Nghĩa địa dòng họ, Nam Định', 20.4339, 106.1621]],
+      [2, 'Trần Thị Mão', '', 'F', 1866, 1940, 'Nam Định', 'Nội trợ', 1, 0, 0, 1, 'Cụ bà tần tảo nuôi con ăn học.', 0],
+      [3, 'Nguyễn Đình Cẩn', 'Tự Chính', 'M', 1888, 1957, 'Nam Định', 'Thầy thuốc nam', 2, 1, 2, 4, 'Cụ Cẩn nối nghiệp cha, làm thầy thuốc nam, nổi tiếng nhân hậu.', ['Mộ cụ Cẩn', 'Nghĩa địa dòng họ, Nam Định', 20.4339, 106.1621]],
+      [4, 'Lê Thị Sáu', '', 'F', 1892, 1970, 'Thái Bình', 'Buôn bán nhỏ', 2, 0, 0, 3, '', 0],
+      [5, 'Nguyễn Đình Tín', '', 'M', 1891, 1945, 'Nam Định', 'Nông dân', 2, 1, 2, 0, 'Mất sớm trong nạn đói năm Ất Dậu.', 0],
+      [6, 'Nguyễn Đình Bảo', 'Tự Quang', 'M', 1915, 1990, 'Hà Nội', 'Giáo viên', 3, 3, 4, 7, 'Ông Bảo lên Hà Nội dạy học từ năm 1938, là người lập sổ gia phả đầu tiên của chi.', ['Mộ ông Bảo', 'Nghĩa trang Văn Điển, Hà Nội', 20.9561, 105.8478]],
+      [7, 'Phạm Thị Hòa', '', 'F', 1920, 2003, 'Hà Nội', 'Y tá', 3, 0, 0, 6, '', 0],
+      [8, 'Nguyễn Đình Lễ', '', 'M', 1919, 1972, 'Hà Nội', 'Công nhân', 3, 3, 4, 0, '', 0],
+      [9, 'Nguyễn Thị Mai', '', 'F', 1923, 2011, 'Nam Định', 'Nội trợ', 3, 3, 4, 0, '', 0],
+      [10, 'Nguyễn Đình Hưng', 'Bố Hưng', 'M', 1945, 0, 'Hà Nội', 'Kỹ sư cầu đường', 4, 6, 7, 11, 'Ông Hưng tham gia xây nhiều cây cầu ở miền Bắc, hiện là trưởng chi.', 0],
+      [11, 'Vũ Thị Lan', '', 'F', 1948, 0, 'Hà Nội', 'Giáo viên', 4, 0, 0, 10, '', 0],
+      [12, 'Nguyễn Đình Hải', '', 'M', 1950, 2019, 'Hải Phòng', 'Thủy thủ', 4, 6, 7, 0, '', ['Mộ ông Hải', 'Nghĩa trang Ninh Hải, Hải Phòng', 20.8271, 106.6783]],
+      [13, 'Nguyễn Thị Hạnh', '', 'F', 1953, 0, 'Đà Nẵng', 'Dược sĩ', 4, 6, 7, 0, '', 0],
+      [14, 'Nguyễn Đình Minh', 'Minh Béo', 'M', 1974, 0, 'Hà Nội', 'Kiến trúc sư', 5, 10, 11, 15, 'Người đang sử dụng bản demo này.', 0],
+      [15, 'Đỗ Thu Trang', '', 'F', 1977, 0, 'Hà Nội', 'Bác sĩ', 5, 0, 0, 14, '', 0],
+      [16, 'Nguyễn Thu Hà', '', 'F', 1978, 0, 'TP. Hồ Chí Minh', 'Kế toán', 5, 10, 11, 0, '', 0],
+      [17, 'Nguyễn Đình Quân', '', 'M', 1980, 0, 'Hải Phòng', 'Kỹ sư tàu biển', 5, 12, 0, 0, '', 0],
+      [18, 'Nguyễn Đình Khang', '', 'M', 2005, 0, 'Hà Nội', 'Sinh viên', 6, 14, 15, 0, '', 0],
+      [19, 'Nguyễn Khánh Linh', '', 'F', 2009, 0, 'Hà Nội', 'Học sinh', 6, 14, 15, 0, '', 0]
+    ];
+    const DATES = {1: ['1862-03-15', '1928-10-02'], 2: ['1866-08-20', '1940-01-25'], 3: ['1888-11-30', '1957-12-12'], 4: ['1892-05-05', '1970-07-18'], 5: ['1891', '1945'], 6: ['1915-02-14', '1990-04-03'], 7: ['1920-09-09', '2003-09-14'], 8: ['1919-06-01', '1972'], 9: ['1923-12-25', '2011-03-30'], 10: ['1945-09-02', ''], 11: ['1948-12-05', ''], 12: ['1950-07-21', '2019-11-28'], 13: ['1953-04-10', ''], 14: ['1974-12-12', ''], 15: ['1977-03-08', ''], 16: ['1978-10-01', ''], 17: ['1980-06-19', ''], 18: ['2005-01-09', ''], 19: ['2009-08-17', '']};
+    const MEV = [['Họp họ cuối năm', '2026-12-27', 'Nhà thờ họ, Nam Định', 'Họp họ', [10, 14]], ['Họp mặt đầu xuân', '2027-02-20', 'Nhà thờ họ, Nam Định', 'Họp họ', [10, 14]]];
+    let USERS = [];
+    const CSV_SAMPLE = '\uFEFFexternal_id,full_name,gender,birth_date,death_date,birth_place,occupation,generation_number,father_external_id,mother_external_id,spouse_external_id\nP001,Nguyễn Đình Phúc,MALE,2010-05-20,,Hà Nội,Học sinh,6,,,\nP002,Nguyễn Đình An,MALE,2012,,Hà Nội,Học sinh,6,,,\nP003,Trần Văn X,MALE,1960-13-45,,Nam Định,Thợ mộc,4,P999,,\n';
+
+    /* ===== TRẠNG THÁI ===== */
+    const S = {role: 'VIEWER', me: 0, center: 0, ready: 0, hist: [], zoom: 1, tab: {}, page: 1, f: {q: '', gen: '', liv: '', g: '', sort: 'name'}, atab: 'users', lib: 'Ảnh', evf: 'Sắp tới', imp: null};
+    let ppl = [], audit = [], nextId = 100;
+    const save = () => { };
+
+    /* ===== ÂM LỊCH: thuật toán Hồ Ngọc Đức (cùng thuật toán và tên hàm với vanng822/amlich) ===== */
+    const INT = Math.floor, PI = Math.PI;
+    function jdFromDate(dd, mm, yy) {const a = INT((14 - mm) / 12), y = yy + 4800 - a, m = mm + 12 * a - 3; let jd = dd + INT((153 * m + 2) / 5) + 365 * y + INT(y / 4) - INT(y / 100) + INT(y / 400) - 32045; if (jd < 2299161) jd = dd + INT((153 * m + 2) / 5) + 365 * y + INT(y / 4) - 32083; return jd}
+    function jdToDate(jd) {let a, b, c; if (jd > 2299160) {a = jd + 32044; b = INT((4 * a + 3) / 146097); c = a - INT(b * 146097 / 4)} else {b = 0; c = jd + 32082} const d = INT((4 * c + 3) / 1461), e = c - INT(1461 * d / 4), m = INT((5 * e + 2) / 153); return [e - INT((153 * m + 2) / 5) + 1, m + 3 - 12 * INT(m / 10), b * 100 + d - 4800 + INT(m / 10)]}
+    function NewMoon(k) {const T = k / 1236.85, T2 = T * T, T3 = T2 * T, dr = PI / 180; let J = 2415020.75933 + 29.53058868 * k + 0.0001178 * T2 - 0.000000155 * T3; J += 0.00033 * Math.sin((166.56 + 132.87 * T - 0.009173 * T2) * dr); const M = 359.2242 + 29.10535608 * k - 0.0000333 * T2 - 0.00000347 * T3, Mp = 306.0253 + 385.81691806 * k + 0.0107306 * T2 + 0.00001236 * T3, F = 21.2964 + 390.67050646 * k - 0.0016528 * T2 - 0.00000239 * T3; let C = (0.1734 - 0.000393 * T) * Math.sin(M * dr) + 0.0021 * Math.sin(2 * dr * M); C += -0.4068 * Math.sin(Mp * dr) + 0.0161 * Math.sin(dr * 2 * Mp); C -= 0.0004 * Math.sin(dr * 3 * Mp); C += 0.0104 * Math.sin(dr * 2 * F) - 0.0051 * Math.sin(dr * (M + Mp)); C += -0.0074 * Math.sin(dr * (M - Mp)) + 0.0004 * Math.sin(dr * (2 * F + M)); C += -0.0004 * Math.sin(dr * (2 * F - M)) - 0.0006 * Math.sin(dr * (2 * F + Mp)); C += 0.0010 * Math.sin(dr * (2 * F - Mp)) + 0.0005 * Math.sin(dr * (2 * Mp + M)); const dt = T < -11 ? 0.001 + 0.000839 * T + 0.0002261 * T2 - 0.00000845 * T3 - 0.000000081 * T * T3 : -0.000278 + 0.000265 * T + 0.000262 * T2; return J + C - dt}
+    function SunLongitude(jd) {const T = (jd - 2451545.0) / 36525, T2 = T * T, dr = PI / 180, M = 357.52910 + 35999.05030 * T - 0.0001559 * T2 - 0.00000048 * T * T2, L0 = 280.46645 + 36000.76983 * T + 0.0003032 * T2; let DL = (1.914600 - 0.004817 * T - 0.000014 * T2) * Math.sin(dr * M); DL += (0.019993 - 0.000101 * T) * Math.sin(dr * 2 * M) + 0.000290 * Math.sin(dr * 3 * M); let L = (L0 + DL) * dr; L -= PI * 2 * INT(L / (PI * 2)); return L}
+    const getSunLongitude = (d, tz) => INT(SunLongitude(d - 0.5 - tz / 24) / PI * 6);
+    const getNewMoonDay = (k, tz) => INT(NewMoon(k) + 0.5 + tz / 24);
+    function getLunarMonth11(yy, tz) {const k = INT((jdFromDate(31, 12, yy) - 2415021) / 29.530588853); let nm = getNewMoonDay(k, tz); if (getSunLongitude(nm, tz) >= 9) nm = getNewMoonDay(k - 1, tz); return nm}
+    function getLeapMonthOffset(a11, tz) {const k = INT((a11 - 2415021.076998695) / 29.530588853 + 0.5); let last, i = 1, arc = getSunLongitude(getNewMoonDay(k + i, tz), tz); do {last = arc; i++; arc = getSunLongitude(getNewMoonDay(k + i, tz), tz)} while (arc != last && i < 14); return i - 1}
+    function convertSolar2Lunar(dd, mm, yy, tz = 7) {const dn = jdFromDate(dd, mm, yy), k = INT((dn - 2415021.076998695) / 29.530588853); let ms = getNewMoonDay(k + 1, tz); if (ms > dn) ms = getNewMoonDay(k, tz); let a11 = getLunarMonth11(yy, tz), b11 = a11, ly; if (a11 >= ms) {ly = yy; a11 = getLunarMonth11(yy - 1, tz)} else {ly = yy + 1; b11 = getLunarMonth11(yy + 1, tz)} const ld = dn - ms + 1, diff = INT((ms - a11) / 29); let leap = 0, lm = diff + 11; if (b11 - a11 > 365) {const lmo = getLeapMonthOffset(a11, tz); if (diff >= lmo) {lm = diff + 10; if (diff == lmo) leap = 1} } if (lm > 12) lm -= 12; if (lm >= 11 && diff < 4) ly -= 1; return [ld, lm, ly, leap]}
+    function convertLunar2Solar(ld, lm, ly, leap, tz = 7) {let a11, b11; if (lm < 11) {a11 = getLunarMonth11(ly - 1, tz); b11 = getLunarMonth11(ly, tz)} else {a11 = getLunarMonth11(ly, tz); b11 = getLunarMonth11(ly + 1, tz)} const k = INT(0.5 + (a11 - 2415021.076998695) / 29.530588853); let off = lm - 11; if (off < 0) off += 12; if (b11 - a11 > 365) {const lmo = getLeapMonthOffset(a11, tz); let lo = lmo - 2; if (lo < 0) lo += 12; if (leap && lm != lo) return [0, 0, 0]; else if (leap || off >= lmo) off += 1} return jdToDate(getNewMoonDay(k + off, tz) + ld - 1)}
+    const CAN = ['Giáp', 'Ất', 'Bính', 'Đinh', 'Mậu', 'Kỷ', 'Canh', 'Tân', 'Nhâm', 'Quý'], CHI = ['Tý', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi', 'Thân', 'Dậu', 'Tuất', 'Hợi'];
+    const yc = y => CAN[(y + 6) % 10] + ' ' + CHI[(y + 8) % 12];
+    const pad = n => String(n).padStart(2, '0');
+    const full = s => /^\d{4}-\d\d-\d\d$/.test(s || '');
+    const fd = s => full(s) ? s.split('-').reverse().join('/') : (s || '');
+    function sync(p) {p.b = +(p.bd || '').slice(0, 4) || 0; p.d = +(p.dd || '').slice(0, 4) || 0}
+    function parseD(t) {t = t.trim(); if (!t) return ''; const m = t.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})$/); if (m) {const d = +m[1], mo = +m[2], y = +m[3], x = new Date(y, mo - 1, d); if (x.getFullYear() !== y || x.getMonth() !== mo - 1 || x.getDate() !== d) return null; return `${y}-${pad(mo)}-${pad(d)}`} return /^\d{4}$/.test(t) ? t : null}
+    function lun(s) {if (!full(s)) return null; const [y, m, d] = s.split('-').map(Number), l = convertSolar2Lunar(d, m, y, 7); return {d: l[0], m: l[1], y: l[2], leap: l[3], txt: `${l[0]}/${l[1]}${l[3] ? ' nhuận' : ''} năm ${yc(l[2])}`}}
+    const dl = s => {if (!s) return 'Chưa rõ'; const l = lun(s); return fd(s) + (l ? ` <small class="mut">(âm lịch ${l.txt})</small>` : ' <small class="mut">(chỉ có năm, chưa tính được âm lịch)</small>')};
+    function lunarOn(l, y) {let r = convertLunar2Solar(l.d, l.m, y, 0, 7); const b = convertSolar2Lunar(r[0], r[1], r[2], 7); if (b[0] !== l.d || b[1] !== l.m) r = convertLunar2Solar(29, l.m, y, 0, 7); return `${r[2]}-${pad(r[1])}-${pad(r[0])}`}
+    const todayS = () => {const d = new Date(); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`};
+    function evAll() {
+      const Y = +todayS().slice(0, 4), o = MEV.map(e => [...e, '']);
+      live().forEach(p => {
+        if (full(p.dd)) {const l = lun(p.dd); for (let y = Y - 1; y <= Y + 1; y++) {const n = y - l.y; if (n > 0) o.push(['Giỗ ' + p.name, lunarOn(l, y), 'Nhà thờ họ', 'Giỗ', [p.id], `Âm lịch ${l.d}/${l.m} · giỗ lần thứ ${n}`])} }
+        if (isLive(p) && full(p.bd)) for (let y = Y - 1; y <= Y + 1; y++)o.push(['Sinh nhật ' + p.name, `${y}-${p.bd.slice(5)}`, '', 'Sinh nhật', [p.id], `Tròn ${y - p.b} tuổi`])
+      });
+      return o.sort((a, b) => a[1] < b[1] ? -1 : 1)
+    }
+    /* ===== TIỆN ÍCH ===== */
+    const $ = s => document.querySelector(s);
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+    const fold = s => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').toLowerCase();
+    const live = () => ppl.filter(p => !p.del);
+    const P = id => ppl.find(p => p.id === id && !p.del);
+    const kids = id => live().filter(p => p.f === id || p.m === id);
+    const can = a => a === 'edit' ? S.role !== 'VIEWER' : S.role === 'ADMIN';
+    const isLive = p => !p.dd;
+    const life = p => `${p.b || '?'}–${p.d || (p.d === 0 ? 'nay' : '?')}`;
+    const ini = p => p.name.trim().split(/\s+/).slice(-1)[0].charAt(0);
+    const av = (p, c = '') => `<span class="av ${p.g === 'F' ? 'f' : ''} ${isLive(p) ? '' : 'x'} ${c}" aria-hidden="true">${esc(ini(p))}</span>`;
+    const nowS = () => new Date().toISOString().slice(0, 16).replace('T', ' ');
+    async function log(act, ent, txt, pid = 0) {audit.unshift({t: nowS(), who: 'Bạn', act, ent, txt, pid}); await sb.from('audit_log').insert({act, ent, txt, pid: pid || null})}
+    function fail(e) {toast(/row-level|permission/i.test(e.message) ? 'Bạn không có quyền thực hiện hành động này.' : 'Lỗi: ' + e.message); const b = $('#sv'); if (b) b.disabled = false; return 0}
+    function fromDb(r) {const p = {id: r.id, name: r.name, cn: r.cn || '', g: r.g || 'M', bd: r.bd || '', dd: r.dd || '', pl: r.pl || '', job: r.job || '', gen: r.gen || 1, f: r.f || 0, m: r.m || 0, sp: r.sp || 0, bio: r.bio || '', gr: r.gr || 0, ext: r.ext, del: r.deleted ? 1 : 0, upd: (r.updated_at || '').slice(0, 10)}; sync(p); return p}
+    function toast(m) {const t = document.createElement('div'); t.className = 'toast'; t.setAttribute('role', 'status'); t.textContent = m; document.body.append(t); setTimeout(() => t.remove(), 2600)}
+    function modal(html) {$('#ov').innerHTML = `<div class="mask" onclick="if(event.target===this)closeM()"><div class="modal" role="dialog" aria-modal="true">${html}</div></div>`}
+    function closeM() {$('#ov').innerHTML = ''}
+    function confirmM(msg, fn, label = 'Xác nhận', danger) {window._cf = fn; modal(`<h3>Xác nhận</h3><p>${msg}</p><div class="row"><button class="btn alt" onclick="closeM()">Hủy</button><button class="btn ${danger ? 'dng' : ''}" onclick="closeM();_cf()">${label}</button></div>`)}
+    const LBL = [['Bạn', 'Bạn'], ['Cha', 'Mẹ'], ['Ông', 'Bà'], ['Cụ ông', 'Cụ bà'], ['Kỵ ông', 'Kỵ bà'], ['Cao tổ', 'Cao tổ mẫu']];
+    function relTo(id) {let lv = [S.me], d = 0; while (lv.length && d < 6) {if (lv.includes(id)) return LBL[d][P(id).g === 'F' ? 1 : 0]; lv = lv.flatMap(x => {const p = P(x); return p ? [p.f, p.m].filter(Boolean) : []}); d++} return ''}
+    function reason(p, q) {const n = fold(q); if (fold(p.name).includes(n)) return 'khớp tên'; if (fold(p.cn).includes(n)) return 'khớp tên tự'; if (fold(p.pl).includes(n)) return 'khớp nơi ở'; if (String(p.b).includes(n) || String(p.d).includes(n)) return 'khớp năm'; if (fold(p.job).includes(n)) return 'khớp nghề nghiệp'; if (fold(p.bio).includes(n)) return 'khớp tiểu sử'; return ''}
+    function card(p) {return `<button class="card pc" onclick="location.hash='#/person/${p.id}'">${av(p)}<span><b>${esc(p.name)}</b><br><small class="mut">${life(p)} · Đời ${p.gen}${relTo(p.id) ? ' · ' + relTo(p.id) : ''}</small></span></button>`}
+    function empty(t, btn = '') {return `<div class="empty"><div style="font-size:42px">🏮</div><p>${t}</p>${btn}</div>`}
+
+    /* ===== TÌM KIẾM TOÀN CỤC ===== */
+    $('#q').addEventListener('input', e => {
+      const q = e.target.value.trim(), b = $('#sug'); if (q.length < 2) {b.hidden = true; return }
+      const r = live().map(p => [p, reason(p, q)]).filter(x => x[1]).slice(0, 8);
+      b.hidden = false; b.innerHTML = r.length ? r.map(([p, w]) => `<button onclick="pick(${p.id})">${av(p)}<span><b>${esc(p.name)}</b><br><small>${life(p)} · ${w}</small></span></button>`).join('') : '<div class="empty">Không tìm thấy thành viên phù hợp. Hãy thử tên khác hoặc năm sinh.</div>'
+    });
+    $('#q').addEventListener('keydown', e => {if (e.key === 'Enter') {S.f.q = e.target.value; S.page = 1; $('#sug').hidden = true; location.hash = '#/members'; render()} });
+    function pick(id) {$('#sug').hidden = true; $('#q').value = ''; location.hash = '#/person/' + id}
+    document.addEventListener('click', e => {if (!e.target.closest('.sbox')) $('#sug').hidden = true});
+
+
+    /* ===== ĐIỀU HƯỚNG ===== */
+    const NAV = [['home', '🏠', 'Trang chủ'], ['tree', '🌳', 'Cây gia phả'], ['members', '👥', 'Thành viên'], ['gens', '📜', 'Thế hệ'], ['lib', '🖼', 'Thư viện'], ['events', '📅', 'Sự kiện'], ['admin', '⚙', 'Quản trị']];
+    function route() {const h = (location.hash || '#/home').slice(2).split('/'); return [h[0] || 'home', h[1]]}
+    function render() {
+      if (!S.ready) return; const [r, a] = route(); closeSheet();
+      $('#nav').innerHTML = NAV.filter(n => n[0] !== 'admin' || S.role === 'ADMIN').map(n => `<a href="#/${n[0]}" class="${r === n[0] || (r === 'person' && n[0] === 'members') ? 'on' : ''}"><b>${n[1]}</b>${n[2]}</a>`).join('');
+      const v = {home, tree, members, person, gens, lib, events, admin}[r] || home; $('#app').innerHTML = v(a); window.scrollTo(0, 0); if (r === 'tree') initTree()
+    }
+    window.addEventListener('hashchange', render);
+
+    /* ===== TRANG CHỦ ===== */
+    function home() {
+      const ch = []; let c = P(S.me); while (c) {ch.unshift(c); c = P(c.f)}
+      const ev = evAll().filter(e => e[1] >= todayS()).slice(0, 3);
+      const rec = [...live()].sort((a, b) => b.upd < a.upd ? -1 : 1).slice(0, 6);
+      const gens = new Set(live().map(p => p.gen)).size;
+      return `<section class="hero"><div class="in"><div><h1>Gia phả họ Nguyễn Đình, chi Kẻ Sặt</h1><p style="font-size:18px;max-width:46ch">Sáu thế hệ con cháu theo dòng cha, từ cụ Khoan ở Nam Định đến những người trẻ hôm nay. Tra cứu, bổ sung và gìn giữ cho đời sau.</p><div class="row"><a class="btn" href="#/members">Tra cứu thành viên</a><a class="btn alt" href="#/tree/${S.me}">Xem cây gia phả</a></div></div>
+ <div><p class="mut" style="margin:0 0 8px">Dòng cha của bạn</p><ol class="chain">${ch.map(p => `<li class="${p.id === S.me ? 'me' : ''}"><a href="#/person/${p.id}" style="text-decoration:none;color:inherit"><b>${esc(p.name)}</b> <small class="mut">Đời ${p.gen}, ${life(p)}</small></a></li>`).join('')}</ol></div></div></section>
+ <div class="wrap">${!P(S.me) || (P(S.me).bio || '').length > 10 ? '' : '<div class="ban">Hồ sơ của bạn còn thiếu thông tin. <a href="#/person/' + S.me + '">Bổ sung hồ sơ của bạn</a></div>'}
+ <div class="stats"><div><b>${live().length}</b>thành viên</div><div><b>${gens}</b>thế hệ</div><div><b>${live().filter(p => p.gr).length}</b>phần mộ có tọa độ</div><div><b>${evAll().filter(e => e[1] >= todayS()).length}</b>sự kiện sắp tới</div></div>
+ <h2 style="margin-top:28px">Sự kiện sắp tới</h2><div class="grid">${ev.map(evCard).join('')}</div>
+ <h2 style="margin-top:28px">Mới cập nhật</h2><div class="grid">${rec.map(card).join('')}</div></div>
+ <footer class="wrap mut" style="border-top:1px solid var(--line);margin-top:30px"><small>Gia phả nội bộ họ Nguyễn Đình. Liên hệ quản trị: an.admin@giapha.vn. Dữ liệu chỉ dành cho thành viên đã được cấp tài khoản. Phiên bản demo 1.0</small></footer>`}
+    function evCard(e) {const [y, m, d] = e[1].split('-').map(Number); return `<div class="card ev"><div class="d">${d}<small>Tháng ${m}</small></div><div><b>${esc(e[0])}</b><br><small class="mut">${d}/${m}/${y}${e[2] ? ' · ' + esc(e[2]) : ''}</small>${e[5] ? `<br><small>${esc(e[5])}</small>` : ''}<br><span class="chip">${e[3]}</span></div></div>`}
+
+    /* ===== CÂY GIA PHẢ (TỔ TIÊN) ===== */
+    function node(p, cls = '') {return `<button class="nd ${cls}" onclick="openSheet(${p.id})" aria-label="${esc(p.name)}">${av(p)}<b>${esc(p.name.split(' ').slice(-2).join(' '))}</b><small>${life(p)}</small>${relTo(p.id) && p.id !== S.me ? `<small>${relTo(p.id)}</small>` : ''}</button>`}
+    const virt = (w, ch) => `<button class="nd vr" onclick="${can('edit') ? `openForm(0,${ch},'${w}')` : `toast('Bạn không có quyền thực hiện hành động này.')`}"><span class="av x">?</span>Chưa rõ<small>${can('edit') ? 'Bổ sung thông tin' : w === 'f' ? 'Cha' : 'Mẹ'}</small></button>`;
+    function branch(id, d, max, top) {
+      const p = P(id); if (!p) return ''; let ps = '';
+      if (d < max) {const f = P(p.f), m = P(p.m); ps = `<div class="ps">${f ? branch(f.id, d + 1, max) : `<div class="br">${virt('f', id)}</div>`}${m ? `<div class="br">${node(m)}</div>` : `<div class="br">${virt('m', id)}</div>`}</div><i class="st"></i>`}
+      return `<div class="br">${ps}${node(p, id === S.center ? 'me' : '')}</div>`
+    }
+    function tree(a) {
+      if (!live().length) return `<div class="wrap">${empty('Chưa có dữ liệu để dựng cây.')}</div>`; if (a && P(+a) && +a !== S.center) {S.hist.push(S.center); S.center = +a} const c = P(S.center) || P(S.me) || live()[0]; S.center = c.id;
+      const ch = []; let x = c; while (x) {ch.unshift(x); x = P(x.f)}
+      return `<div class="wrap"><h2>Cây tổ tiên của ${esc(c.name)}</h2>
+ <p class="mut" style="margin:0 0 10px"><small>Dòng cha: ${ch.map(p => `<a href="#/tree/${p.id}">${esc(p.name.split(' ').slice(-1)[0])}</a>`).join(' → ')}</small></p>
+ <div class="row" style="margin-bottom:12px"><button class="btn sm alt" onclick="treeUp()" ${c.f || c.m ? '' : 'disabled'}>Lên tổ tiên</button><button class="btn sm alt" onclick="treeBack()" ${S.hist.length ? '' : 'disabled'}>Quay lại</button><button class="btn sm alt" onclick="S.center=${ch[0].id};render()">Về đầu cây</button><button class="btn sm alt" onclick="zoom(.15)" aria-label="Phóng to">＋</button><button class="btn sm alt" onclick="zoom(-.15)" aria-label="Thu nhỏ">－</button><span class="sbox" style="margin:0;max-width:220px"><select onchange="S.hist.push(S.center);S.center=+this.value;render()" aria-label="Đổi người trung tâm">${live().map(p => `<option value="${p.id}" ${p.id === c.id ? 'selected' : ''}>${esc(p.name)}</option>`).join('')}</select></span></div>
+ <div class="tree" id="tr"><div class="tz" id="tz">${branch(c.id, 0, 5, 1)}</div></div>
+ <p class="mut"><small>Chạm vào một người để xem nhanh. Kéo để di chuyển, cuộn chuột hoặc nút ＋ － để phóng to.</small></p></div>`}
+    function initTree() {
+      const t = $('#tr'); if (!t) return; zoom(0); t.scrollLeft = (t.scrollWidth - t.clientWidth) / 2;
+      t.addEventListener('wheel', e => {if (e.ctrlKey || e.metaKey || e.shiftKey) {e.preventDefault(); zoom(e.deltaY < 0 ? .1 : -.1)} }, {passive: false});
+      let dn = 0, sx, sl; t.addEventListener('pointerdown', e => {if (e.target.closest('.nd')) return; dn = 1; sx = e.clientX; sl = t.scrollLeft}); window.addEventListener('pointermove', e => {if (dn) t.scrollLeft = sl - (e.clientX - sx)}); window.addEventListener('pointerup', () => dn = 0)
+    }
+    function zoom(d) {S.zoom = Math.min(1.6, Math.max(.5, S.zoom + d)); const z = $('#tz'); if (z) z.style.transform = `scale(${S.zoom})`}
+    function treeUp() {const c = P(S.center); S.hist.push(S.center); S.center = c.f || c.m; render()}
+    function treeBack() {S.center = S.hist.pop(); render()}
+    function closeSheet() {document.querySelectorAll('.sheet').forEach(s => s.remove())}
+    function openSheet(id) {
+      closeSheet(); const p = P(id); const s = document.createElement('div'); s.className = 'sheet'; s.setAttribute('role', 'dialog');
+      s.innerHTML = `<div class="row" style="justify-content:space-between"><span></span><button class="btn sm alt" onclick="closeSheet()" aria-label="Đóng">Đóng</button></div><div class="row" style="flex-wrap:nowrap">${av(p, 'lg')}<div><h3 style="margin:0">${esc(p.name)}</h3><span class="mut">${life(p)}</span><br><span class="chip">Đời ${p.gen}</span><span class="chip">${isLive(p) ? 'Còn sống' : 'Đã mất'}</span></div></div><dl style="margin:14px 0"><dt>Nơi ở</dt><dd>${esc(p.pl)}</dd><dt>Nghề nghiệp</dt><dd>${esc(p.job || 'Chưa rõ')}</dd><dt>Quan hệ</dt><dd>${relTo(id) || 'Chưa xác định'}</dd></dl><div class="row"><a class="btn" href="#/person/${id}">Xem hồ sơ</a>${id !== S.center ? `<button class="btn alt" onclick="S.hist.push(S.center);S.center=${id};render()">Đặt làm trung tâm</button>` : ''}</div>`; document.body.append(s)
+    }
+
+    /* ===== DANH SÁCH THÀNH VIÊN ===== */
+    function members() {
+      const f = S.f, n = fold(f.q); let r = live().filter(p => (!n || reason(p, f.q)) && (!f.gen || p.gen == f.gen) && (!f.liv || (f.liv === 'l') === isLive(p)) && (!f.g || p.g === f.g));
+      r.sort((a, b) => f.sort === 'name' ? a.name.split(' ').slice(-1)[0].localeCompare(b.name.split(' ').slice(-1)[0], 'vi') : f.sort === 'birth' ? a.b - b.b : f.sort === 'gen' ? a.gen - b.gen : b.upd < a.upd ? -1 : 1);
+      const pp = 8, pg = Math.max(1, Math.ceil(r.length / pp)); S.page = Math.min(S.page, pg); const sl = r.slice((S.page - 1) * pp, S.page * pp);
+      const sel = (k, o) => `<select onchange="S.f.${k}=this.value;S.page=1;render()" aria-label="${k}">${o.map(x => `<option value="${x[0]}" ${S.f[k] == x[0] ? 'selected' : ''}>${x[1]}</option>`).join('')}</select>`;
+      return `<div class="wrap"><div class="row" style="justify-content:space-between"><h2>Thành viên</h2>${can('edit') ? '<button class="btn" onclick="openForm()">Thêm thành viên</button>' : ''}</div>
+ <input type="search" value="${esc(f.q)}" placeholder="Tìm theo tên, tên tự, nơi ở, năm sinh…" oninput="S.f.q=this.value;S.page=1;clearTimeout(window._t);window._t=setTimeout(()=>{render();const i=document.querySelector('#app input');i.focus();i.setSelectionRange(99,99)},350)">
+ <div class="fg" style="margin:6px 0 14px;grid-template-columns:repeat(2,1fr)">${sel('gen', [['', 'Mọi thế hệ'], ...[1, 2, 3, 4, 5, 6].map(g => [g, 'Đời ' + g])])}${sel('liv', [['', 'Còn sống và đã mất'], ['l', 'Còn sống'], ['d', 'Đã mất']])}${sel('g', [['', 'Mọi giới tính'], ['M', 'Nam'], ['F', 'Nữ']])}${sel('sort', [['name', 'Tên A–Z'], ['birth', 'Năm sinh'], ['gen', 'Thế hệ'], ['upd', 'Mới cập nhật']])}</div>
+ <p class="mut">${r.length} kết quả</p>${sl.length ? `<div class="grid">${sl.map(card).join('')}</div>` : empty('Không tìm thấy thành viên phù hợp. Hãy thử tên khác hoặc năm sinh.', `<button class="btn alt" onclick="S.f={q:'',gen:'',liv:'',g:'',sort:'name'};render()">Xóa bộ lọc</button>`)}
+ <div class="row" style="justify-content:center;margin-top:16px"><button class="btn sm alt" ${S.page < 2 ? 'disabled' : ''} onclick="S.page--;render()">Trước</button><span>Trang ${S.page}/${pg}</span><button class="btn sm alt" ${S.page >= pg ? 'disabled' : ''} onclick="S.page++;render()">Sau</button></div></div>`
+    }
+
+    /* ===== HỒ SƠ ===== */
+    function person(a) {
+      const p = P(+a); if (!p) return `<div class="wrap">${empty('Không tìm thấy hồ sơ này.', '<a class="btn" href="#/members">Về danh sách</a>')}</div>`;
+      const t = S.tab[p.id] || 'Thông tin', T = ['Thông tin', 'Gia đình', 'Tiểu sử', 'Ảnh & tài liệu', 'Mộ phần', 'Lịch sử'];
+      const lk = x => x ? `<a href="#/person/${x.id}">${esc(x.name)}</a>` : '<span class="mut">Chưa rõ</span>';
+      const sp = P(p.sp), fa = P(p.f), mo = P(p.m), ks = kids(p.id); let body = '';
+      if (t === 'Thông tin') body = `<dl><dt>Họ và tên</dt><dd>${esc(p.name)}</dd><dt>Tên tự / biệt danh</dt><dd>${esc(p.cn || 'Chưa có')}</dd><dt>Giới tính</dt><dd>${p.g === 'F' ? 'Nữ' : 'Nam'}</dd><dt>Ngày sinh</dt><dd>${dl(p.bd)}</dd><dt>Ngày mất</dt><dd>${isLive(p) ? 'Còn sống' : dl(p.dd)}</dd>${!isLive(p) && full(p.dd) ? `<dt>Ngày giỗ</dt><dd>${lun(p.dd).d}/${lun(p.dd).m} âm lịch hằng năm</dd>` : ''}<dt>Nơi ở</dt><dd>${esc(p.pl)}</dd><dt>Nghề nghiệp</dt><dd>${esc(p.job || 'Chưa rõ')}</dd><dt>Cập nhật</dt><dd>${p.upd}</dd></dl>`;
+      if (t === 'Gia đình') body = `<dl><dt>Cha</dt><dd>${lk(fa)}</dd><dt>Mẹ</dt><dd>${lk(mo)}</dd><dt>Vợ/chồng</dt><dd>${lk(sp)}</dd><dt>Con</dt><dd>${ks.length ? ks.map(lk).join(', ') : '<span class="mut">Chưa có</span>'}</dd></dl>`;
+      if (t === 'Tiểu sử') body = p.bio ? `<p style="font:19px/1.7 var(--serif)">${esc(p.bio)}</p>` : empty('Chưa có tiểu sử.', can('edit') ? `<button class="btn" onclick="openForm(${p.id})">Bổ sung tiểu sử</button>` : '');
+      if (t === 'Ảnh & tài liệu') body = empty('Chưa có ảnh hoặc tài liệu cho người này.', can('edit') ? '<button class="btn alt" onclick="toast(\'Bản demo chưa hỗ trợ tải tệp\')">Tải ảnh lên</button>' : '');
+      if (t === 'Mộ phần') body = p.gr ? `<dl><dt>Tên</dt><dd>${esc(p.gr[0])}</dd><dt>Địa điểm</dt><dd>${esc(p.gr[1])}</dd><dt>Tọa độ</dt><dd>${p.gr[2]}, ${p.gr[3]}</dd></dl><p><a class="btn alt" target="_blank" rel="noopener" href="https://www.openstreetmap.org/?mlat=${p.gr[2]}&mlon=${p.gr[3]}#map=15/${p.gr[2]}/${p.gr[3]}">Mở bản đồ</a></p>` : empty(isLive(p) ? 'Người này còn sống.' : 'Chưa có thông tin mộ phần.');
+      if (t === 'Lịch sử') {const l = audit.filter(x => x.pid === p.id); body = l.length ? `<div class="tw"><table>${l.map(x => `<tr><td>${x.t}</td><td>${esc(x.who)}</td><td>${x.act}: ${esc(x.txt)}</td></tr>`).join('')}</table></div>` : empty('Chưa có thay đổi nào được ghi lại.')}
+      return `<div class="wrap"><a href="#/members">← Danh sách</a><div class="row" style="flex-wrap:nowrap;margin:12px 0">${av(p, 'lg')}<div><h1 style="margin:0;font-size:32px">${esc(p.name)}</h1>${p.cn ? `<span class="mut">Tự ${esc(p.cn)}</span><br>` : ''}<span class="mut">${life(p)}</span></div></div>
+ <span class="chip">Đời ${p.gen}</span><span class="chip">${p.g === 'F' ? 'Nữ' : 'Nam'}</span><span class="chip">${isLive(p) ? 'Còn sống' : 'Đã mất'}</span>
+ <div class="row" style="margin-top:12px"><a class="btn" href="#/tree/${p.id}">Xem cây tổ tiên</a>${can('edit') ? `<button class="btn alt" onclick="openForm(${p.id})">Chỉnh sửa</button>` : ''}${can('del') ? `<button class="btn alt" onclick="delP(${p.id})" style="color:var(--err);border-color:var(--err)">Xóa hồ sơ</button>` : ''}</div>
+ <div class="tabs" role="tablist">${T.map(x => `<button role="tab" class="${x === t ? 'on' : ''}" onclick="S.tab[${p.id}]='${x}';render()">${x}</button>`).join('')}</div><div class="card">${body}</div></div>`
+    }
+    function delP(id) {const p = P(id); confirmM(`Xóa hồ sơ <b>${esc(p.name)}</b>? Hồ sơ được ẩn (xóa mềm) và có thể khôi phục.`, async () => {const r = await sb.from('persons').update({deleted: true}).eq('id', id); if (r.error) return fail(r.error); p.del = 1; log('DELETE', p.name, 'Xóa mềm hồ sơ', id); toast('Đã xóa hồ sơ'); location.hash = '#/members'}, 'Xóa hồ sơ', 1)}
+
+    /* ===== THÊM / SỬA ===== */
+    function openForm(id = 0, child = 0, w = '') {
+      if (!can('edit')) return toast('Bạn không có quyền thực hiện hành động này.');
+      const p = id ? P(id) : {name: '', cn: '', g: w === 'm' ? 'F' : 'M', b: '', d: '', pl: '', job: '', gen: child ? P(child).gen - 1 : 1, f: 0, m: 0, sp: 0, bio: ''};
+      const op = (g, cur) => `<option value="0">Chưa rõ</option>` + live().filter(x => x.g === g && x.id !== id).map(x => `<option value="${x.id}" ${x.id === cur ? 'selected' : ''}>${esc(x.name)} (${x.b})</option>`).join('');
+      modal(`<h3>${id ? 'Chỉnh sửa hồ sơ' : 'Thêm thành viên'}</h3><div class="fg"><div><label for="fn">Họ và tên *</label><input id="fn" value="${esc(p.name)}"></div><div><label for="fg">Giới tính *</label><select id="fg"><option value="M" ${p.g === 'M' ? 'selected' : ''}>Nam</option><option value="F" ${p.g === 'F' ? 'selected' : ''}>Nữ</option></select></div><div><label>Tên tự / biệt danh</label><input id="fc" value="${esc(p.cn)}"></div><div><label>Thế hệ</label><input id="fgen" type="number" min="1" value="${p.gen}"></div><div><label for="fb">Ngày sinh (dd/mm/yyyy hoặc chỉ năm)</label><input id="fb" value="${fd(p.bd)}" oninput="prev(this)" inputmode="numeric"><small id="fb2" class="mut"></small></div><div><label for="fd">Ngày mất (để trống nếu còn sống)</label><input id="fd" value="${fd(p.dd)}" oninput="prev(this)" inputmode="numeric"><small id="fd2" class="mut"></small></div><div><label>Nơi ở</label><input id="fp" value="${esc(p.pl)}"></div><div><label>Nghề nghiệp</label><input id="fj" value="${esc(p.job)}"></div><div><label>Cha</label><select id="ff">${op('M', child && w === 'f' ? 0 : p.f)}</select></div><div><label>Mẹ</label><select id="fm">${op('F', p.m)}</select></div></div><label>Tiểu sử</label><textarea id="fbio" rows="3">${esc(p.bio)}</textarea><div class="row" style="margin-top:16px"><button class="btn alt" onclick="closeM()">Hủy</button><button class="btn" id="sv" onclick="saveP(${id},${child},'${w}')">Lưu thay đổi</button></div>`);['fb', 'fd'].forEach(i => prev($('#' + i)))
+    }
+    function prev(el) {const v = parseD(el.value), o = $('#' + el.id + '2'); o.className = v === null ? 'er' : 'mut'; o.textContent = v === null ? 'Ngày không hợp lệ' : full(v) ? 'Âm lịch: ' + lun(v).txt : v ? 'Chỉ có năm, chưa tính được âm lịch và ngày giỗ' : ''}
+    async function saveP(id, child, w) {
+      const name = $('#fn').value.trim(); if (!name) return toast('Vui lòng nhập họ tên'); if (parseD($('#fb').value) === null || parseD($('#fd').value) === null) return toast('Ngày sinh hoặc ngày mất không hợp lệ');
+      const v = {name, g: $('#fg').value, cn: $('#fc').value.trim(), gen: +$('#fgen').value || 1, bd: parseD($('#fb').value) || null, dd: parseD($('#fd').value) || null, pl: $('#fp').value.trim(), job: $('#fj').value.trim(), f: +$('#ff').value || null, m: +$('#fm').value || null, bio: $('#fbio').value.trim()};
+      $('#sv').disabled = true; let p, r;
+      if (id) {p = P(id); const ch = Object.keys(v).filter(k => (v[k] || 0) !== (p[k] || 0)); r = await sb.from('persons').update({...v, updated_at: new Date().toISOString()}).eq('id', id).select().single(); if (r.error) return fail(r.error); Object.assign(p, fromDb(r.data)); log('UPDATE', name, 'Đổi: ' + (ch.join(', ') || 'không đổi'), id)}
+      else {r = await sb.from('persons').insert(v).select().single(); if (r.error) return fail(r.error); p = fromDb(r.data); ppl.push(p); log('CREATE', name, 'Tạo hồ sơ mới', p.id); if (child) {const c = P(child), k = w === 'f' ? 'f' : 'm'; if (c) {const q = await sb.from('persons').update({[k]: p.id}).eq('id', child); if (!q.error) c[k] = p.id} } }
+      closeM(); toast('Đã lưu thay đổi'); id ? render() : location.hash = '#/person/' + p.id
+    }
+    /* ===== THẾ HỆ ===== */
+    function gens(a) {
+      const gs = [...new Set(live().map(p => p.gen))].sort((x, y) => x - y);
+      if (a) {const l = live().filter(p => p.gen == a); return `<div class="wrap"><a href="#/gens">← Các thế hệ</a><h2 style="margin-top:8px">Thế hệ ${a}</h2>${l.length ? `<div class="grid">${l.map(card).join('')}</div>` : empty('Chưa có thành viên ở thế hệ này.')}</div>`}
+      return `<div class="wrap"><h2>Các thế hệ</h2><div class="grid">${gs.map(g => {const l = live().filter(p => p.gen === g); return `<a class="card gen" href="#/gens/${g}" style="text-decoration:none;color:inherit"><span class="n">${g}</span><span><b>${g === 1 ? 'Thế hệ 1: Tổ tiên' : 'Thế hệ ' + g}</b><br><small class="mut">${l.length} người · ${l.slice(0, 3).map(p => esc(p.name.split(' ').slice(-1)[0])).join(', ')}</small></span></a>`}).join('')}</div></div>`
+    }
+
+    /* ===== THƯ VIỆN & SỰ KIỆN ===== */
+    function lib() {
+      const T = ['Ảnh', 'Tài liệu'], cs = ['#8C2F2F', '#B98A3B', '#6B4F3A', '#4F6B5A', '#7A5B1E', '#5A4A6B'];
+      const im = ['Nhà thờ họ năm 1962', 'Cụ Bảo cùng học trò', 'Giỗ tổ năm 1998', 'Ảnh cưới ông Hưng', 'Họp họ năm 2015', 'Chuyến về quê 2023'], doc = [['Gia huấn cụ Khoan (bản quét)', 'PDF', '1912'], ['Sổ gia phả đầu tiên', 'PDF', '1968'], ['Văn tế giỗ tổ', 'PDF', '1990']];
+      return `<div class="wrap"><h2>Thư viện</h2><div class="tabs">${T.map(t => `<button class="${S.lib === t ? 'on' : ''}" onclick="S.lib='${t}';render()">${t}</button>`).join('')}</div>` + (S.lib === 'Ảnh' ? `<div class="grid" style="grid-template-columns:repeat(2,1fr)">${im.map((t, i) => `<div class="ph" style="background:${cs[i]}">${t}</div>`).join('')}</div><p class="mut"><small>Ảnh minh họa. Bản thật sẽ có lightbox và ảnh tải lên từ thành viên.</small></p>` : `<div class="grid">${doc.map(d => `<div class="card"><b>${d[0]}</b><br><small class="mut">${d[1]} · năm ${d[2]}</small><br><button class="btn sm alt" onclick="toast('Bản demo chưa có tệp thật')">Tải xuống</button></div>`).join('')}</div>`) + '</div>'
+    }
+    function events() {
+      const t = todayS(), up = S.evf === 'Sắp tới', l = evAll().filter(e => up ? e[1] >= t : e[1] < t && e[1] >= (+t.slice(0, 4) - 1) + t.slice(4)), miss = live().filter(p => p.dd && !full(p.dd)); if (!up) l.reverse();
+      return `<div class="wrap"><h2>Sự kiện</h2>${miss.length ? `<div class="ban">Chưa tính được ngày giỗ vì mới có năm mất: ${miss.map(p => `<a href="#/person/${p.id}">${esc(p.name)}</a>`).join(', ')}. Hãy bổ sung ngày tháng năm mất.</div>` : ''}<div class="tabs">${['Sắp tới', 'Đã diễn ra'].map(t => `<button class="${S.evf === t ? 'on' : ''}" onclick="S.evf='${t}';render()">${t}</button>`).join('')}</div>${l.length ? `<div class="grid">${l.map(evCard).join('')}</div>` : empty('Chưa có sự kiện nào.')}</div>`
+    }
+
+    /* ===== QUẢN TRỊ ===== */
+    function admin() {
+      if (S.role !== 'ADMIN') return `<div class="wrap">${empty('Bạn không có quyền thực hiện hành động này.')}</div>`;
+      const T = [['users', 'Người dùng'], ['log', 'Nhật ký'], ['csv', 'Nhập CSV']]; let b = '';
+      if (S.atab === 'users') b = `<div class="tw"><table><tr><th>Tài khoản</th><th>Vai trò</th><th>Trạng thái</th></tr>${USERS.map((u, i) => `<tr><td>${u[0]}<br><small class="mut">${u[1]}</small></td><td><select onchange="chRole(${i},this)" aria-label="Vai trò">${['ADMIN', 'EDITOR', 'VIEWER'].map(r => `<option ${r === u[2] ? 'selected' : ''}>${r}</option>`).join('')}</select></td><td>${u[3] === 'ACTIVE' ? '<span class="ok">Đang dùng</span>' : '<span style="color:var(--warn)">Đã mời</span>'}</td></tr>`).join('')}</table></div><p class="mut"><small>Không cho tự đăng ký. Mời thành viên mới tại Supabase: Authentication, Users, Invite user. Tài khoản mới mặc định là VIEWER, bạn đổi vai trò ở đây.</small></p>`;
+      if (S.atab === 'log') b = `<div class="tw"><table><tr><th>Thời gian</th><th>Người làm</th><th>Hành động</th></tr>${audit.slice(0, 40).map(x => `<tr><td>${x.t}</td><td>${esc(x.who)}</td><td><span class="chip">${x.act}</span> ${esc(x.ent)}<br><small class="mut">${esc(x.txt)}</small></td></tr>`).join('')}</table></div>`;
+      if (S.atab === 'csv') {const i = S.imp; b = (live().length ? '' : '<div class="ban">Chưa có dữ liệu. <button class="btn sm" onclick="seedSample()">Nạp dữ liệu mẫu</button></div>') + `<p>Chọn tệp CSV (UTF-8). Hệ thống kiểm tra trước, bạn xác nhận rồi mới nhập.</p><div class="row"><button class="btn alt" onclick="dlCsv()">Tải file mẫu</button><input type="file" accept=".csv" onchange="readCsv(this.files[0])" style="width:auto" aria-label="Chọn tệp CSV"></div>` + (i ? `<p style="margin-top:14px"><b class="ok">${i.ok.length} dòng hợp lệ</b>, <b class="er">${i.err.length} dòng lỗi</b></p>${i.err.length ? `<div class="tw"><table>${i.err.map(e => `<tr><td>Dòng ${e[0]}</td><td class="er">${esc(e[1])}</td></tr>`).join('')}</table></div>` : ''}<button class="btn" ${i.ok.length ? '' : 'disabled'} onclick="confirmM('Nhập ${i.ok.length} thành viên mới vào gia phả? Dữ liệu hiện có không bị xóa.',doImp,'Nhập dữ liệu')">Nhập ${i.ok.length} dòng hợp lệ</button>` : '')}
+      return `<div class="wrap"><h2>Quản trị</h2><div class="tabs">${T.map(t => `<button class="${S.atab === t[0] ? 'on' : ''}" onclick="S.atab='${t[0]}';render()">${t[1]}</button>`).join('')}</div>${b}</div>`
+    }
+    function chRole(i, el) {const old = USERS[i][2], nw = el.value; el.value = old; confirmM(`Đổi vai trò của <b>${esc(USERS[i][0])}</b> từ ${old} sang ${nw}?`, async () => {const r = await sb.from('profiles').update({role: nw}).eq('id', USERS[i][4]); if (r.error) return fail(r.error); USERS[i][2] = nw; log('ROLE_CHANGE', USERS[i][0], old + ' → ' + nw); toast('Đã đổi vai trò'); render()}, 'Đổi vai trò')}
+    function dlCsv() {const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([CSV_SAMPLE], {type: 'text/csv;charset=utf-8'})); a.download = 'gia-pha-mau.csv'; a.click()}
+    function parseCsv(t) {const r = []; let row = [], c = '', q = 0; t = t.replace(/^\uFEFF/, ''); for (let i = 0; i < t.length; i++) {const ch = t[i]; if (q) {if (ch === '"' && t[i + 1] === '"') {c += '"'; i++} else if (ch === '"') q = 0; else c += ch} else if (ch === '"') q = 1; else if (ch === ',') {row.push(c); c = ''} else if (ch === '\n' || ch === '\r') {if (ch === '\r' && t[i + 1] === '\n') i++; row.push(c); r.push(row); row = []; c = ''} else c += ch} if (c || row.length) {row.push(c); r.push(row)} return r.filter(x => x.some(y => y.trim()))}
+    function readCsv(f) {
+      if (!f) return; const rd = new FileReader(); rd.onload = () => {
+        const rows = parseCsv(rd.result), h = rows.shift().map(x => x.trim()), ok = [], err = [], ids = new Set(rows.map(r => r[h.indexOf('external_id')]));
+        rows.forEach((r, i) => {
+          const o = {}; h.forEach((k, j) => o[k] = (r[j] || '').trim()); const n = i + 2;
+          if (!o.full_name) return err.push([n, 'Thiếu họ tên']);
+          if (o.death_date && !/^\d{4}(-\d\d-\d\d)?$/.test(o.death_date)) return err.push([n, 'Ngày mất không hợp lệ: ' + o.death_date]);
+          if (o.birth_date && !/^\d{4}(-(0[0-9]|1[0-2])-([0-2][0-9]|3[01]))?$/.test(o.birth_date)) return err.push([n, 'Ngày sinh không hợp lệ: ' + o.birth_date]);
+          for (const k of ['father_external_id', 'mother_external_id']) if (o[k] && !ids.has(o[k]) && !ppl.some(p => p.ext === o[k])) return err.push([n, 'Không tìm thấy mã ' + o[k] + ' trong tệp hoặc dữ liệu']);
+          ok.push(o)
+        }); S.imp = {ok, err}; render()
+      }; rd.readAsText(f, 'utf-8')
+    }
+    async function doImp() {
+      const ok = S.imp.ok, rows = ok.map(o => ({name: o.full_name, g: o.gender === 'FEMALE' ? 'F' : 'M', bd: o.birth_date || null, dd: o.death_date || null, pl: o.birth_place, job: o.occupation, gen: +o.generation_number || 1, ext: o.external_id}));
+      const r = await sb.from('persons').insert(rows).select(); if (r.error) return fail(r.error); const map = {}; r.data.forEach(x => map[x.ext] = x.id);
+      for (const o of ok) {const f = map[o.father_external_id] || ppl.find(x => o.father_external_id && x.ext === o.father_external_id)?.id, m = map[o.mother_external_id] || ppl.find(x => o.mother_external_id && x.ext === o.mother_external_id)?.id; if (f || m) await sb.from('persons').update({f: f || null, m: m || null}).eq('id', map[o.external_id])}
+      await log('IMPORT', 'CSV', `Nhập ${ok.length} dòng, lỗi ${S.imp.err.length}`); await loadAll(); toast('Đã nhập ' + ok.length + ' thành viên'); S.imp = null; S.atab = 'log'; render()
+    }
+    async function seedSample() {
+      const rows = SEED.map(r => ({name: r[1], cn: r[2], g: r[3], bd: DATES[r[0]][0] || null, dd: DATES[r[0]][1] || null, pl: r[6], job: r[7], gen: r[8], bio: r[12], gr: r[13] || null, ext: 'S' + r[0]}));
+      const r = await sb.from('persons').insert(rows).select(); if (r.error) return fail(r.error); const id = {}; r.data.forEach(x => id[x.ext] = x.id);
+      for (const e of SEED) {const u = {}; if (e[9]) u.f = id['S' + e[9]]; if (e[10]) u.m = id['S' + e[10]]; if (e[11]) u.sp = id['S' + e[11]]; if (Object.keys(u).length) await sb.from('persons').update(u).eq('id', id['S' + e[0]])}
+      await log('IMPORT', 'Dữ liệu mẫu', 'Nạp 18 người mẫu'); await loadAll(); S.me = id.S14 || S.me; S.center = S.me; toast('Đã nạp dữ liệu mẫu'); render()
+    }
+    /* ===== ĐĂNG NHẬP & TẢI DỮ LIỆU ===== */
+    let sb;
+    async function boot() {
+      if (/XXXX|ANON_PUBLIC/.test(SUPABASE_URL + SUPABASE_KEY) || !window.supabase) return $('#app').innerHTML = '<div class="wrap"><div class="ban">Chưa cấu hình. Mở file, điền SUPABASE_URL và SUPABASE_KEY ở đầu thẻ script.</div></div>';
+      sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY); const {data} = await sb.auth.getSession(); data.session ? start(data.session.user) : showLogin()
+    }
+    function showLogin(msg = '') {$('#nav').innerHTML = ''; $('#app').innerHTML = `<div class="wrap" style="max-width:420px;padding-top:40px"><div class="card"><h2>Đăng nhập</h2><p class="mut">Gia phả chỉ dành cho thành viên đã được cấp tài khoản.</p><label for="le">Email</label><input id="le" type="email" autocomplete="username"><label for="lp">Mật khẩu</label><input id="lp" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"><p id="lerr" class="er" role="alert">${msg}</p><div class="row"><button class="btn" onclick="doLogin()">Đăng nhập</button><button class="btn alt" onclick="forgot()">Quên mật khẩu</button></div></div></div>`}
+    async function doLogin() {const r = await sb.auth.signInWithPassword({email: $('#le').value.trim(), password: $('#lp').value}); if (r.error) return $('#lerr').textContent = 'Email hoặc mật khẩu không đúng.'; start(r.data.user)}
+    async function forgot() {const e = $('#le').value.trim(); if (!e) return $('#lerr').textContent = 'Nhập email trước.'; await sb.auth.resetPasswordForEmail(e, {redirectTo: location.origin + location.pathname}); toast('Nếu email tồn tại, liên kết đặt lại mật khẩu đã được gửi')}
+    async function logout() {await sb.auth.signOut(); location.hash = ''; location.reload()}
+    function newPw() {modal('<h3>Đặt mật khẩu mới</h3><label for="np">Mật khẩu (tối thiểu 8 ký tự)</label><input id="np" type="password" autocomplete="new-password"><div class="row" style="margin-top:14px"><button class="btn" onclick="setPw()">Lưu mật khẩu</button></div>')}
+    async function setPw() {const p = $('#np').value; if (p.length < 8) return toast('Mật khẩu cần ít nhất 8 ký tự'); const r = await sb.auth.updateUser({password: p}); if (r.error) return fail(r.error); closeM(); toast('Đã đặt mật khẩu')}
+    async function loadAll() {
+      const r = await sb.from('persons').select('*').order('id').range(0, 4999); if (r.error) return fail(r.error); ppl = r.data.map(fromDb);
+      if (S.role === 'ADMIN') {
+        const u = await sb.from('profiles').select('*').order('email'); USERS = (u.data || []).map(x => [x.email, x.full_name || '', x.role, 'ACTIVE', x.id]); const nm = Object.fromEntries(USERS.map(x => [x[4], x[1] || x[0]]));
+        const a = await sb.from('audit_log').select('*').order('at', {ascending: false}).limit(100); audit = (a.data || []).map(x => ({t: new Date(x.at).toLocaleString('vi-VN'), who: nm[x.who] || '?', act: x.act, ent: x.ent, txt: x.txt, pid: x.pid || 0}))
+      } else audit = []
+    }
+    async function start(u) {
+      const pr = await sb.from('profiles').select('*').eq('id', u.id).maybeSingle(), pf = pr.data;
+      if (!pf) {$('#nav').innerHTML = ''; $('#app').innerHTML = '<div class="wrap">' + empty('Tài khoản của bạn chưa được cấp quyền. Vui lòng liên hệ quản trị viên.', '<button class="btn alt" onclick="logout()">Đăng xuất</button>') + '</div>'; return }
+      S.role = pf.role; $('#who').textContent = (pf.full_name || u.email) + ' · ' + pf.role; await loadAll(); S.me = pf.person_id || live()[0]?.id || 0; S.center = S.me;
+      document.body.classList.add('in'); S.ready = 1; if (!location.hash) location.hash = '#/home'; render(); if (NEEDPW) newPw()
+    }
+    boot();
+  </script>
+</body>
+
+</html>
