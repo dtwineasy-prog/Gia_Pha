@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Gia phả họ Đoàn</title>
+  <title>Gia phả họ Nguyễn Đình</title>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Cormorant+Garamond:wght@500;600;700&display=swap">
@@ -793,13 +793,83 @@
         display: none
       }
     }
+
+    .tz {
+      display: block;
+      min-width: max-content;
+      transform-origin: 0 0
+    }
+
+    .gt {
+      position: relative;
+      display: block;
+      min-width: max-content
+    }
+
+    .gr {
+      margin-bottom: 64px;
+      padding: 8px 12px 14px;
+      border-radius: 12px;
+      background: var(--tint)
+    }
+
+    .gr:last-child {
+      margin-bottom: 0
+    }
+
+    .gl {
+      position: sticky;
+      left: 8px;
+      width: max-content;
+      font: 700 18px var(--serif);
+      color: var(--red);
+      padding-bottom: 6px
+    }
+
+    .gl .chip {
+      margin-left: 8px;
+      font: 500 13px var(--sans);
+      background: #fff;
+      color: var(--ink)
+    }
+
+    .gn {
+      display: flex;
+      gap: 16px;
+      justify-content: center
+    }
+
+    svg.ln {
+      position: absolute;
+      left: 0;
+      top: 0;
+      pointer-events: none;
+      z-index: 2;
+      overflow: visible
+    }
+
+    .ln path {
+      fill: none
+    }
+
+    .lf {
+      stroke: var(--gold);
+      stroke-width: 2
+    }
+
+    .lm {
+      stroke: var(--red);
+      stroke-width: 1.5;
+      stroke-dasharray: 5 4;
+      opacity: .7
+    }
   </style>
 </head>
 
 <body>
   <header>
     <div class="hd">
-      <a class="brand" href="#/home"><span class="seal">Ng</span><span>Họ Đoàn</span></a>
+      <a class="brand" href="#/home"><span class="seal">Ng</span><span>Họ Nguyễn Đình</span></a>
       <div class="sbox"><input id="q" type="search" placeholder="Tìm tên, nơi ở, năm sinh…" autocomplete="off"
           aria-label="Tìm kiếm">
         <div id="sug" class="sug" hidden></div>
@@ -931,43 +1001,48 @@
       const ev = evAll().filter(e => e[1] >= todayS()).slice(0, 3);
       const rec = [...live()].sort((a, b) => b.upd < a.upd ? -1 : 1).slice(0, 6);
       const gens = new Set(live().map(p => p.gen)).size;
-      return `<section class="hero"><div class="in"><div><h1>Gia phả họ Đoàn, chi Kẻ Sặt</h1><p style="font-size:18px;max-width:46ch">Sáu thế hệ con cháu theo dòng cha, từ cụ Khoan ở Nam Định đến những người trẻ hôm nay. Tra cứu, bổ sung và gìn giữ cho đời sau.</p><div class="row"><a class="btn" href="#/members">Tra cứu thành viên</a><a class="btn alt" href="#/tree/${S.me}">Xem cây gia phả</a></div></div>
+      return `<section class="hero"><div class="in"><div><h1>Gia phả họ Nguyễn Đình, chi Kẻ Sặt</h1><p style="font-size:18px;max-width:46ch">Sáu thế hệ con cháu theo dòng cha, từ cụ Khoan ở Nam Định đến những người trẻ hôm nay. Tra cứu, bổ sung và gìn giữ cho đời sau.</p><div class="row"><a class="btn" href="#/members">Tra cứu thành viên</a><a class="btn alt" href="#/tree">Xem cây gia phả</a></div></div>
  <div><p class="mut" style="margin:0 0 8px">Dòng cha của bạn</p><ol class="chain">${ch.map(p => `<li class="${p.id === S.me ? 'me' : ''}"><a href="#/person/${p.id}" style="text-decoration:none;color:inherit"><b>${esc(p.name)}</b> <small class="mut">Đời ${p.gen}, ${life(p)}</small></a></li>`).join('')}</ol></div></div></section>
  <div class="wrap">${!P(S.me) || (P(S.me).bio || '').length > 10 ? '' : '<div class="ban">Hồ sơ của bạn còn thiếu thông tin. <a href="#/person/' + S.me + '">Bổ sung hồ sơ của bạn</a></div>'}
  <div class="stats"><div><b>${live().length}</b>thành viên</div><div><b>${gens}</b>thế hệ</div><div><b>${live().filter(p => p.gr).length}</b>phần mộ có tọa độ</div><div><b>${evAll().filter(e => e[1] >= todayS()).length}</b>sự kiện sắp tới</div></div>
  <h2 style="margin-top:28px">Sự kiện sắp tới</h2><div class="grid">${ev.map(evCard).join('')}</div>
  <h2 style="margin-top:28px">Mới cập nhật</h2><div class="grid">${rec.map(card).join('')}</div></div>
- <footer class="wrap mut" style="border-top:1px solid var(--line);margin-top:30px"><small>Gia phả nội bộ họ Đoàn. Liên hệ quản trị: an.admin@giapha.vn. Dữ liệu chỉ dành cho thành viên đã được cấp tài khoản. Phiên bản demo 1.0</small></footer>`}
+ <footer class="wrap mut" style="border-top:1px solid var(--line);margin-top:30px"><small>Gia phả nội bộ họ Nguyễn Đình. Liên hệ quản trị: an.admin@giapha.vn. Dữ liệu chỉ dành cho thành viên đã được cấp tài khoản. Phiên bản demo 1.0</small></footer>`}
     function evCard(e) {const [y, m, d] = e[1].split('-').map(Number); return `<div class="card ev"><div class="d">${d}<small>Tháng ${m}</small></div><div><b>${esc(e[0])}</b><br><small class="mut">${d}/${m}/${y}${e[2] ? ' · ' + esc(e[2]) : ''}</small>${e[5] ? `<br><small>${esc(e[5])}</small>` : ''}<br><span class="chip">${e[3]}</span></div></div>`}
 
-    /* ===== CÂY GIA PHẢ (TỔ TIÊN) ===== */
-    function node(p, cls = '') {return `<button class="nd ${cls}" onclick="openSheet(${p.id})" aria-label="${esc(p.name)}">${av(p)}<b>${esc(p.name.split(' ').slice(-2).join(' '))}</b><small>${life(p)}</small>${relTo(p.id) && p.id !== S.me ? `<small>${relTo(p.id)}</small>` : ''}</button>`}
-    const virt = (w, ch) => `<button class="nd vr" onclick="${can('edit') ? `openForm(0,${ch},'${w}')` : `toast('Bạn không có quyền thực hiện hành động này.')`}"><span class="av x">?</span>Chưa rõ<small>${can('edit') ? 'Bổ sung thông tin' : w === 'f' ? 'Cha' : 'Mẹ'}</small></button>`;
-    function branch(id, d, max, top) {
-      const p = P(id); if (!p) return ''; let ps = '';
-      if (d < max) {const f = P(p.f), m = P(p.m); ps = `<div class="ps">${f ? branch(f.id, d + 1, max) : `<div class="br">${virt('f', id)}</div>`}${m ? `<div class="br">${node(m)}</div>` : `<div class="br">${virt('m', id)}</div>`}</div><i class="st"></i>`}
-      return `<div class="br">${ps}${node(p, id === S.center ? 'me' : '')}</div>`
-    }
+    /* ===== CÂY GIA PHẢ: mỗi thế hệ nằm trên một hàng ===== */
+    function node(p, cls = '') {return `<button class="nd ${cls}" data-id="${p.id}" onclick="openSheet(${p.id})" aria-label="${esc(p.name)}">${av(p)}<b>${esc(p.name.split(' ').slice(-2).join(' '))}</b><small>${life(p)}</small>${relTo(p.id) && p.id !== S.me ? `<small>${relTo(p.id)}</small>` : ''}</button>`}
     function tree(a) {
-      if (!live().length) return `<div class="wrap">${empty('Chưa có dữ liệu để dựng cây.')}</div>`; if (a && P(+a) && +a !== S.center) {S.hist.push(S.center); S.center = +a} const c = P(S.center) || P(S.me) || live()[0]; S.center = c.id;
-      const ch = []; let x = c; while (x) {ch.unshift(x); x = P(x.f)}
-      return `<div class="wrap"><h2>Cây tổ tiên của ${esc(c.name)}</h2>
- <p class="mut" style="margin:0 0 10px"><small>Dòng cha: ${ch.map(p => `<a href="#/tree/${p.id}">${esc(p.name.split(' ').slice(-1)[0])}</a>`).join(' → ')}</small></p>
- <div class="row" style="margin-bottom:12px"><button class="btn sm alt" onclick="treeUp()" ${c.f || c.m ? '' : 'disabled'}>Lên tổ tiên</button><button class="btn sm alt" onclick="treeBack()" ${S.hist.length ? '' : 'disabled'}>Quay lại</button><button class="btn sm alt" onclick="S.center=${ch[0].id};render()">Về đầu cây</button><button class="btn sm alt" onclick="zoom(.15)" aria-label="Phóng to">＋</button><button class="btn sm alt" onclick="zoom(-.15)" aria-label="Thu nhỏ">－</button><span class="sbox" style="margin:0;max-width:220px"><select onchange="S.hist.push(S.center);S.center=+this.value;render()" aria-label="Đổi người trung tâm">${live().map(p => `<option value="${p.id}" ${p.id === c.id ? 'selected' : ''}>${esc(p.name)}</option>`).join('')}</select></span></div>
- <div class="tree" id="tr"><div class="tz" id="tz">${branch(c.id, 0, 5, 1)}</div></div>
- <p class="mut"><small>Chạm vào một người để xem nhanh. Kéo để di chuyển, cuộn chuột hoặc nút ＋ － để phóng to.</small></p></div>`}
+      const all = live(); if (!all.length) return `<div class="wrap">${empty('Chưa có dữ liệu để dựng cây.')}</div>`;
+      const anc = a && P(+a); if (anc) S.center = +a; const c = P(S.center) || P(S.me) || all[0]; S.center = c.id;
+      let ids = all; if (anc) {const set = new Set([c.id]); let lv = [c.id]; for (let d = 0; d < 6 && lv.length; d++) {lv = lv.flatMap(x => {const p = P(x); return p ? [p.f, p.m].filter(y => y && P(y) && !set.has(y)) : []}); lv.forEach(y => set.add(y))} ids = all.filter(p => set.has(p.id))}
+      S.vis = ids; const gs = [...new Set(ids.map(p => p.gen))].sort((x, y) => x - y), K = {}, ord = {}, rows = [], tot = g => all.filter(p => p.gen === g).length;
+      gs.forEach(g => {
+        const row = ids.filter(p => p.gen === g); row.forEach(p => {const ps = [p.f, p.m].filter(x => ord[x] !== undefined).map(x => ord[x]); K[p.id] = ps.length ? ps.reduce((u, v) => u + v) / ps.length : null});
+        const A = row.filter(p => K[p.id] != null).sort((u, v) => K[u.id] - K[v.id] || u.b - v.b);
+        row.filter(p => K[p.id] == null).sort((u, v) => u.b - v.b).forEach(p => {const i = A.findIndex(x => x.id === p.sp); i >= 0 ? A.splice(i + 1, 0, p) : A.push(p)});
+        A.forEach((p, i) => ord[p.id] = i); rows.push([g, A])
+      });
+      return `<div class="wrap"><h2>Cây gia phả</h2><p class="mut" style="margin:0 0 10px">${ids.length} thành viên, ${gs.length} thế hệ. Mỗi hàng là một thế hệ.</p>
+ <div class="tabs" role="tablist"><button role="tab" class="${anc ? '' : 'on'}" onclick="location.hash='#/tree'">Toàn bộ dòng họ</button><button role="tab" class="${anc ? 'on' : ''}" onclick="location.hash='#/tree/${c.id}'">Tổ tiên của ${esc(c.name)}</button></div>
+ <div class="row" style="margin-bottom:12px"><button class="btn sm alt" onclick="zoom(.15)" aria-label="Phóng to">＋</button><button class="btn sm alt" onclick="zoom(-.15)" aria-label="Thu nhỏ">－</button>${anc ? `<span style="max-width:220px"><select onchange="location.hash='#/tree/'+this.value" aria-label="Đổi người trung tâm">${all.map(p => `<option value="${p.id}" ${p.id === c.id ? 'selected' : ''}>${esc(p.name)}</option>`).join('')}</select></span>` : ''}<small class="mut"><span style="color:var(--gold)">━</span> cha - con &nbsp; <span style="color:var(--red)">┅</span> mẹ - con</small></div>
+ <div class="tree" id="tr"><div class="tz" id="tz"><div class="gt" id="gt"><svg class="ln" id="ln"></svg>${rows.map(([g, A]) => `<section class="gr"><div class="gl">Đời ${g}<span class="chip">${A.length} người${A.length !== tot(g) ? ' / ' + tot(g) + ' trong dòng họ' : ''}</span></div><div class="gn">${A.map(p => node(p, p.id === c.id ? 'me' : '')).join('')}</div></section>`).join('')}</div></div></div>
+ <p class="mut"><small>Chạm vào một người để xem nhanh. Kéo để di chuyển, nút ＋ － để phóng to.</small></p></div>`}
+    function drawLines() {
+      const g = $('#gt'), s = $('#ln'); if (!g || !s) return; s.setAttribute('width', g.offsetWidth); s.setAttribute('height', g.offsetHeight);
+      const el = {}; g.querySelectorAll('.nd').forEach(n => el[n.dataset.id] = n); const cx = n => n.offsetLeft + n.offsetWidth / 2; let h = '';
+      (S.vis || []).forEach(p => {const n = el[p.id]; if (!n) return; for (const [k, o, c] of [['f', 34, 'lf'], ['m', 22, 'lm']]) {const q = el[p[k]]; if (!q) continue; const my = n.closest('.gr').offsetTop - o; h += `<path class="${c}" d="M${cx(n)} ${n.offsetTop}V${my}H${cx(q)}V${q.offsetTop + q.offsetHeight}"/>`} }); s.innerHTML = h
+    }
     function initTree() {
-      const t = $('#tr'); if (!t) return; zoom(0); t.scrollLeft = (t.scrollWidth - t.clientWidth) / 2;
+      const t = $('#tr'); if (!t) return; zoom(0); drawLines(); document.fonts && document.fonts.ready.then(drawLines); t.scrollLeft = (t.scrollWidth - t.clientWidth) / 2;
       t.addEventListener('wheel', e => {if (e.ctrlKey || e.metaKey || e.shiftKey) {e.preventDefault(); zoom(e.deltaY < 0 ? .1 : -.1)} }, {passive: false});
       let dn = 0, sx, sl; t.addEventListener('pointerdown', e => {if (e.target.closest('.nd')) return; dn = 1; sx = e.clientX; sl = t.scrollLeft}); window.addEventListener('pointermove', e => {if (dn) t.scrollLeft = sl - (e.clientX - sx)}); window.addEventListener('pointerup', () => dn = 0)
     }
     function zoom(d) {S.zoom = Math.min(1.6, Math.max(.5, S.zoom + d)); const z = $('#tz'); if (z) z.style.transform = `scale(${S.zoom})`}
-    function treeUp() {const c = P(S.center); S.hist.push(S.center); S.center = c.f || c.m; render()}
-    function treeBack() {S.center = S.hist.pop(); render()}
     function closeSheet() {document.querySelectorAll('.sheet').forEach(s => s.remove())}
     function openSheet(id) {
       closeSheet(); const p = P(id); const s = document.createElement('div'); s.className = 'sheet'; s.setAttribute('role', 'dialog');
-      s.innerHTML = `<div class="row" style="justify-content:space-between"><span></span><button class="btn sm alt" onclick="closeSheet()" aria-label="Đóng">Đóng</button></div><div class="row" style="flex-wrap:nowrap">${av(p, 'lg')}<div><h3 style="margin:0">${esc(p.name)}</h3><span class="mut">${life(p)}</span><br><span class="chip">Đời ${p.gen}</span><span class="chip">${isLive(p) ? 'Còn sống' : 'Đã mất'}</span></div></div><dl style="margin:14px 0"><dt>Nơi ở</dt><dd>${esc(p.pl)}</dd><dt>Nghề nghiệp</dt><dd>${esc(p.job || 'Chưa rõ')}</dd><dt>Quan hệ</dt><dd>${relTo(id) || 'Chưa xác định'}</dd></dl><div class="row"><a class="btn" href="#/person/${id}">Xem hồ sơ</a>${id !== S.center ? `<button class="btn alt" onclick="S.hist.push(S.center);S.center=${id};render()">Đặt làm trung tâm</button>` : ''}</div>`; document.body.append(s)
+      s.innerHTML = `<div class="row" style="justify-content:space-between"><span></span><button class="btn sm alt" onclick="closeSheet()" aria-label="Đóng">Đóng</button></div><div class="row" style="flex-wrap:nowrap">${av(p, 'lg')}<div><h3 style="margin:0">${esc(p.name)}</h3><span class="mut">${life(p)}</span><br><span class="chip">Đời ${p.gen}</span><span class="chip">${isLive(p) ? 'Còn sống' : 'Đã mất'}</span></div></div><dl style="margin:14px 0"><dt>Nơi ở</dt><dd>${esc(p.pl)}</dd><dt>Nghề nghiệp</dt><dd>${esc(p.job || 'Chưa rõ')}</dd><dt>Quan hệ</dt><dd>${relTo(id) || 'Chưa xác định'}</dd></dl><div class="row"><a class="btn" href="#/person/${id}">Xem hồ sơ</a><button class="btn alt" onclick="location.hash='#/tree/${id}'">Cây tổ tiên</button>${can('edit') && !p.f ? `<button class="btn alt sm" onclick="closeSheet();openForm(0,${id},'f')">Thêm cha</button>` : ''}${can('edit') && !p.m ? `<button class="btn alt sm" onclick="closeSheet();openForm(0,${id},'m')">Thêm mẹ</button>` : ''}</div>`; document.body.append(s)
     }
 
     /* ===== DANH SÁCH THÀNH VIÊN ===== */
