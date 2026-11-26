@@ -863,6 +863,155 @@
       stroke-dasharray: 5 4;
       opacity: .7
     }
+
+    .cb {
+      position: relative
+    }
+
+    .cbl {
+      position: absolute;
+      z-index: 60;
+      left: 0;
+      right: 0;
+      top: 100%;
+      margin-top: 4px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      max-height: 220px;
+      overflow: auto;
+      box-shadow: 0 8px 24px #0003
+    }
+
+    .cbo {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: 0;
+      background: none;
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .cbo:hover,
+    .cbo.act {
+      background: var(--tint)
+    }
+
+    .cbo small {
+      display: block
+    }
+
+    .gt .nd {
+      position: absolute;
+      z-index: 2;
+      height: 148px;
+      overflow: hidden;
+      border-top: 4px solid var(--fc, var(--line));
+      transition: opacity .25s, box-shadow .25s, transform .25s
+    }
+
+    .gt .nd.me {
+      border-top-color: var(--red)
+    }
+
+    .gb {
+      position: absolute;
+      left: 0;
+      right: 0;
+      background: var(--tint);
+      border-radius: 12px
+    }
+
+    .gl {
+      z-index: 3;
+      background: var(--tint);
+      padding: 6px 10px 0;
+      border-radius: 10px
+    }
+
+    svg.ln {
+      z-index: 1
+    }
+
+    .ln .e {
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: opacity .25s
+    }
+
+    .ln .wf {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-dasharray: 6 14;
+      display: none
+    }
+
+    .ln .mar {
+      stroke: var(--gold);
+      stroke-width: 3
+    }
+
+    .hl .nd:not(.on) {
+      opacity: .22;
+      filter: grayscale(.7)
+    }
+
+    .hl .e:not(.a) {
+      opacity: .08
+    }
+
+    .hl .dt,
+    .hl .mar {
+      opacity: .2
+    }
+
+    .hl .e.a {
+      stroke-width: 5;
+      opacity: 1
+    }
+
+    .hl .e.an {
+      stroke: var(--red)
+    }
+
+    .hl .e.de {
+      stroke: var(--ok)
+    }
+
+    .hl .wf.a {
+      display: block;
+      stroke-width: 3;
+      animation: flow 1s linear infinite
+    }
+
+    .nd.an {
+      box-shadow: 0 0 0 3px var(--red)
+    }
+
+    .nd.de {
+      box-shadow: 0 0 0 3px var(--ok)
+    }
+
+    .nd.sb {
+      box-shadow: 0 0 0 2px var(--gold)
+    }
+
+    .nd.sl {
+      box-shadow: 0 0 0 4px #E2A93B, 0 8px 20px #0004;
+      transform: scale(1.05);
+      z-index: 4
+    }
+
+    @keyframes flow {
+      to {
+        stroke-dashoffset: -20
+      }
+    }
   </style>
 </head>
 
@@ -910,7 +1059,7 @@
     const DATES = {1: ['1862-03-15', '1928-10-02'], 2: ['1866-08-20', '1940-01-25'], 3: ['1888-11-30', '1957-12-12'], 4: ['1892-05-05', '1970-07-18'], 5: ['1891', '1945'], 6: ['1915-02-14', '1990-04-03'], 7: ['1920-09-09', '2003-09-14'], 8: ['1919-06-01', '1972'], 9: ['1923-12-25', '2011-03-30'], 10: ['1945-09-02', ''], 11: ['1948-12-05', ''], 12: ['1950-07-21', '2019-11-28'], 13: ['1953-04-10', ''], 14: ['1974-12-12', ''], 15: ['1977-03-08', ''], 16: ['1978-10-01', ''], 17: ['1980-06-19', ''], 18: ['2005-01-09', ''], 19: ['2009-08-17', '']};
     const MEV = [['Họp họ cuối năm', '2026-12-27', 'Nhà thờ họ, Nam Định', 'Họp họ', [10, 14]], ['Họp mặt đầu xuân', '2027-02-20', 'Nhà thờ họ, Nam Định', 'Họp họ', [10, 14]]];
     let USERS = [];
-    const CSV_SAMPLE = '\uFEFFexternal_id,full_name,gender,birth_date,death_date,birth_place,occupation,generation_number,father_external_id,mother_external_id,spouse_external_id\nP001,Nguyễn Đình Phúc,MALE,2010-05-20,,Hà Nội,Học sinh,6,,,\nP002,Nguyễn Đình An,MALE,2012,,Hà Nội,Học sinh,6,,,\nP003,Trần Văn X,MALE,1960-13-45,,Nam Định,Thợ mộc,4,P999,,\n';
+    const CSV_SAMPLE = '\uFEFFexternal_id,full_name,gender,birth_date,death_date,birth_place,occupation,generation_number,father_external_id,mother_external_id,spouse_external_id\nP001,Nguyễn Đình Phúc,MALE,1940-03-12,,Hà Nội,Giáo viên,1,,,P002\nP002,Trần Thị Lành,FEMALE,1944-07-02,,Hà Nội,Nội trợ,1,,,P001\nP003,Nguyễn Đình An,MALE,1968-05-20,,Hà Nội,Kỹ sư,2,P001,P002,P004\nP004,Lê Thu Hà,FEMALE,1970-09-09,,Hà Nội,Bác sĩ,2,,,P003\nP005,Nguyễn Đình Bình,MALE,1995-01-15,,Hà Nội,Lập trình viên,3,P003,P004,\nP006,Nguyễn Thu Cúc,FEMALE,1998-11-30,,Hà Nội,Học sinh,3,P003,P004,\n';
 
     /* ===== TRẠNG THÁI ===== */
     const S = {role: 'VIEWER', me: 0, center: 0, ready: 0, hist: [], zoom: 1, tab: {}, page: 1, f: {q: '', gen: '', liv: '', g: '', sort: 'name'}, atab: 'users', lib: 'Ảnh', evf: 'Sắp tới', imp: null};
@@ -1011,34 +1160,62 @@
     function evCard(e) {const [y, m, d] = e[1].split('-').map(Number); return `<div class="card ev"><div class="d">${d}<small>Tháng ${m}</small></div><div><b>${esc(e[0])}</b><br><small class="mut">${d}/${m}/${y}${e[2] ? ' · ' + esc(e[2]) : ''}</small>${e[5] ? `<br><small>${esc(e[5])}</small>` : ''}<br><span class="chip">${e[3]}</span></div></div>`}
 
     /* ===== CÂY GIA PHẢ: mỗi thế hệ nằm trên một hàng ===== */
-    function node(p, cls = '') {return `<button class="nd ${cls}" data-id="${p.id}" onclick="openSheet(${p.id})" aria-label="${esc(p.name)}">${av(p)}<b>${esc(p.name.split(' ').slice(-2).join(' '))}</b><small>${life(p)}</small>${relTo(p.id) && p.id !== S.me ? `<small>${relTo(p.id)}</small>` : ''}</button>`}
+    const FW = 116, FH = 148, CG = 22, SG = 18, RH = 270, TOP = 38;
+    const famCol = i => `hsl(${Math.round(i * 137.508) % 360} ${[62, 70, 58][i % 3]}% ${[40, 34, 46][i % 3]}%)`;
+    function node(p, cls = '', st = '') {return `<button class="nd ${cls}" data-id="${p.id}" style="${st}" onclick="openSheet(${p.id});hl(${p.id})" aria-label="${esc(p.name)}">${av(p)}<b>${esc(p.name.split(' ').slice(-2).join(' '))}</b><small>${life(p)}</small>${relTo(p.id) && p.id !== S.me ? `<small>${relTo(p.id)}</small>` : ''}</button>`}
+    /* Bố cục: con nằm ngay dưới cha mẹ (cha mẹ căn giữa trên đàn con); mỗi thế hệ cùng một hàng; mỗi gia đình một màu (góc vàng nên không giới hạn số màu) */
+    function layout(ids) {
+      const inS = new Set(ids.map(p => p.id)), U = {}, us = [], pos = {}, gOf = {};
+      [...ids].sort((a, b) => a.gen - b.gen || a.b - b.b || a.id - b.id).forEach(p => {if (U[p.id]) return; const u = {m: [p], k: []}; U[p.id] = u; us.push(u); const s = P(p.sp); if (s && inS.has(s.id) && !U[s.id]) {u.m.push(s); U[s.id] = u} });
+      us.forEach(u => {u.m.sort((a, b) => (a.g === 'F') - (b.g === 'F')); for (const x of u.m) {const par = [x.f, x.m].find(y => y && inS.has(y) && U[y] !== u); if (par) {u.pu = U[par]; u.lin = x; break} } if (u.pu) u.pu.k.push(u)});
+      us.forEach(u => {u.k.sort((a, b) => a.lin.b - b.lin.b || a.lin.id - b.lin.id); u.gen = (u.lin || u.m[0]).gen});
+      let ci = 0; us.forEach(u => {if (u.k.length) u.col = famCol(ci++)});
+      const gens = [...new Set(us.map(u => u.gen))].sort((x, y) => x - y), ri = {}; gens.forEach((g, i) => ri[g] = i);
+      const uw = u => u.m.length * FW + (u.m.length - 1) * CG, ks = u => u.k.reduce((t, k) => t + k.sw, 0) + Math.max(0, u.k.length - 1) * SG;
+      const sw = u => {u.k.forEach(sw); u.sw = Math.max(uw(u), ks(u))};
+      const place = (u, l) => {let c = l + (u.sw - ks(u)) / 2; u.k.forEach(k => {place(k, c); c += k.sw + SG}); u.x = l + (u.sw - uw(u)) / 2; u.m.forEach((m, i) => {pos[m.id] = [u.x + i * (FW + CG), ri[u.gen] * RH + TOP]; gOf[m.id] = u.gen})};
+      let X = 12; us.filter(u => !u.pu).forEach(u => {sw(u); place(u, X); X += u.sw + SG * 3});
+      return {pos, us, gens, gOf, W: Math.max(X - SG * 2, 200), H: gens.length * RH - (RH - TOP - FH - 14)}
+    }
     function tree(a) {
       const all = live(); if (!all.length) return `<div class="wrap">${empty('Chưa có dữ liệu để dựng cây.')}</div>`;
-      const anc = a && P(+a); if (anc) S.center = +a; const c = P(S.center) || P(S.me) || all[0]; S.center = c.id;
+      const anc = a && P(+a); if (anc) S.center = +a; const c = P(S.center) || P(S.me) || all[0]; S.center = c.id; S.sel = 0;
       let ids = all; if (anc) {const set = new Set([c.id]); let lv = [c.id]; for (let d = 0; d < 6 && lv.length; d++) {lv = lv.flatMap(x => {const p = P(x); return p ? [p.f, p.m].filter(y => y && P(y) && !set.has(y)) : []}); lv.forEach(y => set.add(y))} ids = all.filter(p => set.has(p.id))}
-      S.vis = ids; const gs = [...new Set(ids.map(p => p.gen))].sort((x, y) => x - y), K = {}, ord = {}, rows = [], tot = g => all.filter(p => p.gen === g).length;
-      gs.forEach(g => {
-        const row = ids.filter(p => p.gen === g); row.forEach(p => {const ps = [p.f, p.m].filter(x => ord[x] !== undefined).map(x => ord[x]); K[p.id] = ps.length ? ps.reduce((u, v) => u + v) / ps.length : null});
-        const A = row.filter(p => K[p.id] != null).sort((u, v) => K[u.id] - K[v.id] || u.b - v.b);
-        row.filter(p => K[p.id] == null).sort((u, v) => u.b - v.b).forEach(p => {const i = A.findIndex(x => x.id === p.sp); i >= 0 ? A.splice(i + 1, 0, p) : A.push(p)});
-        A.forEach((p, i) => ord[p.id] = i); rows.push([g, A])
+      S.vis = ids; const L = layout(ids), rowN = {}; L.us.forEach(u => {if (L.pos[u.m[0].id]) rowN[u.gen] = (rowN[u.gen] || 0) + u.m.length});
+      const tot = g => all.filter(p => (L.gOf[p.id] ?? p.gen) === g).length; let sv = '';
+      L.us.forEach(u => {
+        if (!L.pos[u.m[0].id]) return; const y0 = L.pos[u.m[0].id][1]; if (u.m.length > 1) sv += `<path class="mar" d="M${u.x + FW} ${y0 + FH / 2}H${u.x + FW + CG}"/>`; if (!u.k.length) return;
+        const two = u.m.length > 1, ax = two ? u.x + FW + CG / 2 : u.x + FW / 2, ay = two ? y0 + FH / 2 : y0 + FH, by = y0 + FH + 49;
+        u.k.forEach(k => {const p = L.pos[k.lin.id], d = `M${ax} ${ay}V${by}H${p[0] + FW / 2}V${p[1]}`; sv += `<path class="e" data-c="${k.lin.id}" stroke="${u.col}" d="${d}"/><path class="wf" data-c="${k.lin.id}" d="${d}"/>`}); sv += `<circle class="dt" cx="${ax}" cy="${ay}" r="5" fill="${u.col}"/>`
       });
-      return `<div class="wrap"><h2>Cây gia phả</h2><p class="mut" style="margin:0 0 10px">${ids.length} thành viên, ${gs.length} thế hệ. Mỗi hàng là một thế hệ.</p>
- <div class="tabs" role="tablist"><button role="tab" class="${anc ? '' : 'on'}" onclick="location.hash='#/tree'">Toàn bộ dòng họ</button><button role="tab" class="${anc ? 'on' : ''}" onclick="location.hash='#/tree/${c.id}'">Tổ tiên của ${esc(c.name)}</button></div>
- <div class="row" style="margin-bottom:12px"><button class="btn sm alt" onclick="zoom(.15)" aria-label="Phóng to">＋</button><button class="btn sm alt" onclick="zoom(-.15)" aria-label="Thu nhỏ">－</button>${anc ? `<span style="max-width:220px"><select onchange="location.hash='#/tree/'+this.value" aria-label="Đổi người trung tâm">${all.map(p => `<option value="${p.id}" ${p.id === c.id ? 'selected' : ''}>${esc(p.name)}</option>`).join('')}</select></span>` : ''}<small class="mut"><span style="color:var(--gold)">━</span> cha - con &nbsp; <span style="color:var(--red)">┅</span> mẹ - con</small></div>
- <div class="tree" id="tr"><div class="tz" id="tz"><div class="gt" id="gt"><svg class="ln" id="ln"></svg>${rows.map(([g, A]) => `<section class="gr"><div class="gl">Đời ${g}<span class="chip">${A.length} người${A.length !== tot(g) ? ' / ' + tot(g) + ' trong dòng họ' : ''}</span></div><div class="gn">${A.map(p => node(p, p.id === c.id ? 'me' : '')).join('')}</div></section>`).join('')}</div></div></div>
- <p class="mut"><small>Chạm vào một người để xem nhanh. Kéo để di chuyển, nút ＋ － để phóng to.</small></p></div>`}
-    function drawLines() {
-      const g = $('#gt'), s = $('#ln'); if (!g || !s) return; s.setAttribute('width', g.offsetWidth); s.setAttribute('height', g.offsetHeight);
-      const el = {}; g.querySelectorAll('.nd').forEach(n => el[n.dataset.id] = n); const cx = n => n.offsetLeft + n.offsetWidth / 2; let h = '';
-      (S.vis || []).forEach(p => {const n = el[p.id]; if (!n) return; for (const [k, o, c] of [['f', 34, 'lf'], ['m', 22, 'lm']]) {const q = el[p[k]]; if (!q) continue; const my = n.closest('.gr').offsetTop - o; h += `<path class="${c}" d="M${cx(n)} ${n.offsetTop}V${my}H${cx(q)}V${q.offsetTop + q.offsetHeight}"/>`} }); s.innerHTML = h
+      const bands = L.gens.map((g, i) => `<div class="gb" style="top:${i * RH}px;height:${TOP + FH + 14}px"><div class="gl">Đời ${g}<span class="chip">${rowN[g] || 0} người${anc && rowN[g] !== tot(g) ? ' / ' + tot(g) + ' trong dòng họ' : ''}</span></div></div>`).join('');
+      const nodes = L.us.flatMap(u => u.m.map(m => L.pos[m.id] ? node(m, m.id === c.id ? 'me' : '', `left:${L.pos[m.id][0]}px;top:${L.pos[m.id][1]}px;${u.pu && u.lin === m ? '--fc:' + u.pu.col : ''}`) : '')).join('');
+      return `<div class="wrap"><h2>Cây gia phả</h2><p class="mut" style="margin:0 0 10px">${ids.length} thành viên, ${L.gens.length} thế hệ. Mỗi hàng là một thế hệ; con nằm ngay dưới cha mẹ.</p>
+ // <div class="tabs" role="tablist"><button role="tab" class="${anc ? '' : 'on'}" onclick="location.hash='#/tree'">Toàn bộ dòng họ</button><button role="tab" class="${anc ? 'on' : ''}" onclick="location.hash='#/tree/${c.id}'">Tìm kiếm tổ tiên của thành viên</button></div>
+ <div class="row" style="margin-bottom:12px"><button class="btn sm alt" onclick="zoom(.15)" aria-label="Phóng to">＋</button><button class="btn sm alt" onclick="zoom(-.15)" aria-label="Thu nhỏ">－</button>${anc ? `<span style="max-width:220px"><select onchange="location.hash='#/tree/'+this.value" aria-label="Đổi người trung tâm">${all.map(p => `<option value="${p.id}" ${p.id === c.id ? 'selected' : ''}>${esc(p.name)}</option>`).join('')}</select></span>` : ''}<small class="mut">Mỗi gia đình một màu: đường kẻ và vạch trên thẻ con cùng màu với cha mẹ. Bấm vào một người để xem dòng liên kết.</small></div>
+ <div id="hlbar" class="ban" hidden></div>
+ <div class="tree" id="tr"><div class="tz" id="tz"><div class="gt" id="gt" data-w="${L.W}" style="width:${L.W}px;height:${L.H}px">${bands}<svg class="ln" width="${L.W}" height="${L.H}">${sv}</svg>${nodes}</div></div></div></div>`
     }
+    function relSets(id) {
+      const A = new Set(), D = new Set(), SB = new Set(), inS = new Set(S.vis.map(p => p.id)), p = P(id);
+      const up = x => [x.f, x.m].forEach(y => {const q = y && inS.has(y) && P(y); if (q && !A.has(y)) {A.add(y); up(q)} }), dn = x => kids(x.id).forEach(k => {if (inS.has(k.id) && !D.has(k.id)) {D.add(k.id); dn(k)} }); up(p); dn(p);
+      if (inS.has(p.sp)) SB.add(p.sp); live().forEach(q => {if (q.id !== id && inS.has(q.id) && ((p.f && q.f === p.f) || (p.m && q.m === p.m))) SB.add(q.id)}); D.forEach(i => {const s = P(i).sp; if (s && inS.has(s)) SB.add(s)}); return {A, D, SB}
+    }
+    function hl(id) {
+      const g = $('#gt'); if (!g) return; const {A, D, SB} = relSets(id), p = P(id); S.sel = id; g.classList.add('hl');
+      g.querySelectorAll('.nd').forEach(n => {const i = +n.dataset.id; n.classList.remove('an', 'de', 'sb', 'on', 'sl'); if (i === id) n.classList.add('sl', 'on'); else if (A.has(i)) n.classList.add('an', 'on'); else if (D.has(i)) n.classList.add('de', 'on'); else if (SB.has(i)) n.classList.add('sb', 'on')});
+      g.querySelectorAll('.e,.wf').forEach(e => {const c = +e.dataset.c; e.classList.remove('a', 'an', 'de'); if (c === id || A.has(c)) e.classList.add('a', 'an'); else if (D.has(c)) e.classList.add('a', 'de')});
+      const b = $('#hlbar'); b.hidden = false; b.innerHTML = `<b>${esc(p.name)}</b> · <span style="color:var(--red)">━ Tổ tiên: ${A.size} người</span> · <span style="color:var(--ok)">━ Hậu duệ: ${D.size} người</span> · <span style="color:var(--gold)">▢ Anh chị em, vợ/chồng</span> <button class="btn sm alt" onclick="clearHl()">Bỏ chọn</button>`
+    }
+    function clearHl() {S.sel = 0; const g = $('#gt'); if (g) {g.classList.remove('hl'); g.querySelectorAll('.nd,.e,.wf').forEach(x => x.classList.remove('an', 'de', 'sb', 'on', 'sl', 'a'))} const b = $('#hlbar'); if (b) b.hidden = true; closeSheet()}
     function initTree() {
-      const t = $('#tr'); if (!t) return; zoom(0); drawLines(); document.fonts && document.fonts.ready.then(drawLines); t.scrollLeft = (t.scrollWidth - t.clientWidth) / 2;
+      const t = $('#tr'); if (!t) return; S.zoom = Math.max(.3, Math.min(1, (t.clientWidth - 16) / +$('#gt').dataset.w)); zoom(0); const n = $('.nd.me'); if (n) t.scrollLeft = Math.max(0, (n.offsetLeft + FW / 2) * S.zoom - t.clientWidth / 2);
+      if (!window._esc) {window._esc = 1; document.addEventListener('keydown', e => {if (e.key === 'Escape') clearHl()})}
       t.addEventListener('wheel', e => {if (e.ctrlKey || e.metaKey || e.shiftKey) {e.preventDefault(); zoom(e.deltaY < 0 ? .1 : -.1)} }, {passive: false});
-      let dn = 0, sx, sl; t.addEventListener('pointerdown', e => {if (e.target.closest('.nd')) return; dn = 1; sx = e.clientX; sl = t.scrollLeft}); window.addEventListener('pointermove', e => {if (dn) t.scrollLeft = sl - (e.clientX - sx)}); window.addEventListener('pointerup', () => dn = 0)
+      let dn = 0, sx, sl, mv = 0; t.addEventListener('pointerdown', e => {mv = 0; if (e.target.closest('.nd')) return; dn = 1; sx = e.clientX; sl = t.scrollLeft}); window.addEventListener('pointermove', e => {if (dn) {mv = Math.abs(e.clientX - sx); t.scrollLeft = sl - (e.clientX - sx)} }); window.addEventListener('pointerup', () => dn = 0);
+      t.addEventListener('click', e => {if (!e.target.closest('.nd') && mv < 5) clearHl()})
     }
-    function zoom(d) {S.zoom = Math.min(1.6, Math.max(.5, S.zoom + d)); const z = $('#tz'); if (z) z.style.transform = `scale(${S.zoom})`}
+    function zoom(d) {S.zoom = Math.min(1.6, Math.max(.3, S.zoom + d)); const z = $('#tz'); if (z) z.style.transform = `scale(${S.zoom})`}
     function closeSheet() {document.querySelectorAll('.sheet').forEach(s => s.remove())}
     function openSheet(id) {
       closeSheet(); const p = P(id); const s = document.createElement('div'); s.className = 'sheet'; s.setAttribute('role', 'dialog');
@@ -1078,11 +1255,28 @@
     function delP(id) {const p = P(id); confirmM(`Xóa hồ sơ <b>${esc(p.name)}</b>? Hồ sơ được ẩn (xóa mềm) và có thể khôi phục.`, async () => {const r = await sb.from('persons').update({deleted: true}).eq('id', id); if (r.error) return fail(r.error); p.del = 1; log('DELETE', p.name, 'Xóa mềm hồ sơ', id); toast('Đã xóa hồ sơ'); location.hash = '#/members'}, 'Xóa hồ sơ', 1)}
 
     /* ===== THÊM / SỬA ===== */
+    const cbT = x => `${esc(x.name)} <small class="mut">Đời ${x.gen}${x.b ? ' · ' + x.b : ''}${x.pl ? ' · ' + esc(x.pl) : ''}</small>`;
+    function combo(id, g, cur, ex, pg) {
+      const L = live().filter(x => x.g === g && !ex.has(x.id)).sort((a, b) => (a.gen === pg - 1 ? 0 : 1) - (b.gen === pg - 1 ? 0 : 1) || a.gen - b.gen || a.name.localeCompare(b.name, 'vi')); window['_cb' + id] = L; const c = P(cur);
+      return `<div class="cb"><input type="hidden" id="${id}" value="${c ? c.id : 0}"><input id="${id}_t" role="combobox" aria-expanded="false" autocomplete="off" placeholder="Gõ tên để tìm hoặc chọn…" value="${c ? esc(c.name) : ''}" oninput="cbF('${id}')" onfocus="cbF('${id}',1)" onblur="cbB('${id}')" onkeydown="cbK(event,'${id}')"><div class="cbl" id="${id}_l" hidden></div></div>`
+    }
+    function cbF(id, all) {
+      const t = $('#' + id + '_t'), l = $('#' + id + '_l'), n = all ? '' : fold(t.value); if (!all && !t.value) $('#' + id).value = 0;
+      const r = window['_cb' + id].filter(x => !n || fold(x.name + ' ' + x.cn + ' ' + x.pl + ' ' + x.b + ' doi ' + x.gen).includes(n)).slice(0, 40); l.hidden = false; l.dataset.i = -1;
+      l.innerHTML = `<button type="button" class="cbo" onmousedown="cbP('${id}',0)">Chưa rõ</button>` + (r.length ? r.map(x => `<button type="button" class="cbo" onmousedown="cbP('${id}',${x.id})">${cbT(x)}</button>`).join('') : '<div class="empty">Không tìm thấy. Thử tên khác hoặc số đời.</div>')
+    }
+    function cbP(id, pid) {$('#' + id).value = pid; $('#' + id + '_t').value = pid ? P(pid).name : ''; $('#' + id + '_l').hidden = true; if (pid && $('#fgen')) $('#fgen').value = P(pid).gen + 1}
+    function cbB(id) {$('#' + id + '_l').hidden = true; const v = +$('#' + id).value; $('#' + id + '_t').value = v && P(v) ? P(v).name : ''}
+    function cbK(e, id) {
+      const l = $('#' + id + '_l'), o = [...l.querySelectorAll('.cbo')]; if (l.hidden) {if (e.key === 'ArrowDown') {e.preventDefault(); cbF(id, 1)} return } let i = +l.dataset.i;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {e.preventDefault(); i = (i + (e.key === 'ArrowDown' ? 1 : -1) + o.length) % o.length; l.dataset.i = i; o.forEach((b, j) => b.classList.toggle('act', j === i)); o[i].scrollIntoView({block: 'nearest'})}
+      else if (e.key === 'Enter' && i >= 0) {e.preventDefault(); o[i].dispatchEvent(new MouseEvent('mousedown'))} else if (e.key === 'Escape') {e.stopPropagation(); l.hidden = true}
+    }
     function openForm(id = 0, child = 0, w = '') {
       if (!can('edit')) return toast('Bạn không có quyền thực hiện hành động này.');
       const p = id ? P(id) : {name: '', cn: '', g: w === 'm' ? 'F' : 'M', b: '', d: '', pl: '', job: '', gen: child ? P(child).gen - 1 : 1, f: 0, m: 0, sp: 0, bio: ''};
-      const op = (g, cur) => `<option value="0">Chưa rõ</option>` + live().filter(x => x.g === g && x.id !== id).map(x => `<option value="${x.id}" ${x.id === cur ? 'selected' : ''}>${esc(x.name)} (${x.b})</option>`).join('');
-      modal(`<h3>${id ? 'Chỉnh sửa hồ sơ' : 'Thêm thành viên'}</h3><div class="fg"><div><label for="fn">Họ và tên *</label><input id="fn" value="${esc(p.name)}"></div><div><label for="fg">Giới tính *</label><select id="fg"><option value="M" ${p.g === 'M' ? 'selected' : ''}>Nam</option><option value="F" ${p.g === 'F' ? 'selected' : ''}>Nữ</option></select></div><div><label>Tên tự / biệt danh</label><input id="fc" value="${esc(p.cn)}"></div><div><label>Thế hệ</label><input id="fgen" type="number" min="1" value="${p.gen}"></div><div><label for="fb">Ngày sinh (dd/mm/yyyy hoặc chỉ năm)</label><input id="fb" value="${fd(p.bd)}" oninput="prev(this)" inputmode="numeric"><small id="fb2" class="mut"></small></div><div><label for="fd">Ngày mất (để trống nếu còn sống)</label><input id="fd" value="${fd(p.dd)}" oninput="prev(this)" inputmode="numeric"><small id="fd2" class="mut"></small></div><div><label>Nơi ở</label><input id="fp" value="${esc(p.pl)}"></div><div><label>Nghề nghiệp</label><input id="fj" value="${esc(p.job)}"></div><div><label>Cha</label><select id="ff">${op('M', child && w === 'f' ? 0 : p.f)}</select></div><div><label>Mẹ</label><select id="fm">${op('F', p.m)}</select></div></div><label>Tiểu sử</label><textarea id="fbio" rows="3">${esc(p.bio)}</textarea><div class="row" style="margin-top:16px"><button class="btn alt" onclick="closeM()">Hủy</button><button class="btn" id="sv" onclick="saveP(${id},${child},'${w}')">Lưu thay đổi</button></div>`);['fb', 'fd'].forEach(i => prev($('#' + i)))
+      const ex = new Set([id]); if (id) {const st = [id]; while (st.length) {const x = st.pop(); kids(x).forEach(k => {if (!ex.has(k.id)) {ex.add(k.id); st.push(k.id)} })} }
+      modal(`<h3>${id ? 'Chỉnh sửa hồ sơ' : 'Thêm thành viên'}</h3><div class="fg"><div><label for="fn">Họ và tên *</label><input id="fn" value="${esc(p.name)}"></div><div><label for="fg">Giới tính *</label><select id="fg"><option value="M" ${p.g === 'M' ? 'selected' : ''}>Nam</option><option value="F" ${p.g === 'F' ? 'selected' : ''}>Nữ</option></select></div><div><label>Tên tự / biệt danh</label><input id="fc" value="${esc(p.cn)}"></div><div><label>Thế hệ</label><input id="fgen" type="number" min="1" value="${p.gen}"></div><div><label for="fb">Ngày sinh (dd/mm/yyyy hoặc chỉ năm)</label><input id="fb" value="${fd(p.bd)}" oninput="prev(this)" inputmode="numeric"><small id="fb2" class="mut"></small></div><div><label for="fd">Ngày mất (để trống nếu còn sống)</label><input id="fd" value="${fd(p.dd)}" oninput="prev(this)" inputmode="numeric"><small id="fd2" class="mut"></small></div><div><label>Nơi ở</label><input id="fp" value="${esc(p.pl)}"></div><div><label>Nghề nghiệp</label><input id="fj" value="${esc(p.job)}"></div><div><label for="ff_t">Cha</label>${combo('ff', 'M', p.f, ex, +p.gen)}</div><div><label for="fm_t">Mẹ</label>${combo('fm', 'F', p.m, ex, +p.gen)}</div></div><label>Tiểu sử</label><textarea id="fbio" rows="3">${esc(p.bio)}</textarea><div class="row" style="margin-top:16px"><button class="btn alt" onclick="closeM()">Hủy</button><button class="btn" id="sv" onclick="saveP(${id},${child},'${w}')">Lưu thay đổi</button></div>`);['fb', 'fd'].forEach(i => prev($('#' + i)))
     }
     function prev(el) {const v = parseD(el.value), o = $('#' + el.id + '2'); o.className = v === null ? 'er' : 'mut'; o.textContent = v === null ? 'Ngày không hợp lệ' : full(v) ? 'Âm lịch: ' + lun(v).txt : v ? 'Chỉ có năm, chưa tính được âm lịch và ngày giỗ' : ''}
     async function saveP(id, child, w) {
@@ -1117,30 +1311,57 @@
       const T = [['users', 'Người dùng'], ['log', 'Nhật ký'], ['csv', 'Nhập CSV']]; let b = '';
       if (S.atab === 'users') b = `<div class="tw"><table><tr><th>Tài khoản</th><th>Vai trò</th><th>Trạng thái</th></tr>${USERS.map((u, i) => `<tr><td>${u[0]}<br><small class="mut">${u[1]}</small></td><td><select onchange="chRole(${i},this)" aria-label="Vai trò">${['ADMIN', 'EDITOR', 'VIEWER'].map(r => `<option ${r === u[2] ? 'selected' : ''}>${r}</option>`).join('')}</select></td><td>${u[3] === 'ACTIVE' ? '<span class="ok">Đang dùng</span>' : '<span style="color:var(--warn)">Đã mời</span>'}</td></tr>`).join('')}</table></div><p class="mut"><small>Không cho tự đăng ký. Mời thành viên mới tại Supabase: Authentication, Users, Invite user. Tài khoản mới mặc định là VIEWER, bạn đổi vai trò ở đây.</small></p>`;
       if (S.atab === 'log') b = `<div class="tw"><table><tr><th>Thời gian</th><th>Người làm</th><th>Hành động</th></tr>${audit.slice(0, 40).map(x => `<tr><td>${x.t}</td><td>${esc(x.who)}</td><td><span class="chip">${x.act}</span> ${esc(x.ent)}<br><small class="mut">${esc(x.txt)}</small></td></tr>`).join('')}</table></div>`;
-      if (S.atab === 'csv') {const i = S.imp; b = (live().length ? '' : '<div class="ban">Chưa có dữ liệu. <button class="btn sm" onclick="seedSample()">Nạp dữ liệu mẫu</button></div>') + `<p>Chọn tệp CSV (UTF-8). Hệ thống kiểm tra trước, bạn xác nhận rồi mới nhập.</p><div class="row"><button class="btn alt" onclick="dlCsv()">Tải file mẫu</button><input type="file" accept=".csv" onchange="readCsv(this.files[0])" style="width:auto" aria-label="Chọn tệp CSV"></div>` + (i ? `<p style="margin-top:14px"><b class="ok">${i.ok.length} dòng hợp lệ</b>, <b class="er">${i.err.length} dòng lỗi</b></p>${i.err.length ? `<div class="tw"><table>${i.err.map(e => `<tr><td>Dòng ${e[0]}</td><td class="er">${esc(e[1])}</td></tr>`).join('')}</table></div>` : ''}<button class="btn" ${i.ok.length ? '' : 'disabled'} onclick="confirmM('Nhập ${i.ok.length} thành viên mới vào gia phả? Dữ liệu hiện có không bị xóa.',doImp,'Nhập dữ liệu')">Nhập ${i.ok.length} dòng hợp lệ</button>` : '')}
+      if (S.atab === 'csv') {const i = S.imp; b = (live().length ? '' : '<div class="ban">Chưa có dữ liệu. <button class="btn sm" onclick="seedSample()">Nạp dữ liệu mẫu</button></div>') + `<p>Chọn tệp CSV (UTF-8). Hệ thống kiểm tra trước, bạn xác nhận rồi mới nhập.</p><div class="row"><button class="btn alt" onclick="dlCsv()">Tải file mẫu</button><input type="file" accept=".csv" onchange="readCsv(this.files[0])" style="width:auto" aria-label="Chọn tệp CSV"></div>` + (i ? `<p style="margin-top:14px"><b class="ok">${i.ok.length} dòng hợp lệ</b> (mới ${i.ok.length - i.upd}, cập nhật ${i.upd} do trùng mã), <b class="er">${i.err.length} dòng lỗi</b>, <b style="color:var(--warn)">${i.warn.length} cảnh báo</b></p><p>Sẽ liên kết: <b>${i.lk.f}</b> cha, <b>${i.lk.m}</b> mẹ, <b>${i.lk.sp}</b> vợ/chồng.</p>${i.warn.length ? `<div class="tw"><table>${i.warn.map(e => `<tr><td>Dòng ${e[0]}</td><td style="color:var(--warn)">${esc(e[1])}</td></tr>`).join('')}</table></div>` : ''}${i.err.length ? `<div class="tw"><table>${i.err.map(e => `<tr><td>Dòng ${e[0]}</td><td class="er">${esc(e[1])}</td></tr>`).join('')}</table></div>` : ''}<button class="btn" ${i.ok.length ? '' : 'disabled'} onclick="confirmM('Nhập ${i.ok.length} dòng (mới ${i.ok.length - i.upd}, cập nhật ${i.upd})? Không xóa dữ liệu nào.',doImp,'Nhập dữ liệu')">Nhập ${i.ok.length} dòng hợp lệ</button>` : '')}
       return `<div class="wrap"><h2>Quản trị</h2><div class="tabs">${T.map(t => `<button class="${S.atab === t[0] ? 'on' : ''}" onclick="S.atab='${t[0]}';render()">${t[1]}</button>`).join('')}</div>${b}</div>`
     }
     function chRole(i, el) {const old = USERS[i][2], nw = el.value; el.value = old; confirmM(`Đổi vai trò của <b>${esc(USERS[i][0])}</b> từ ${old} sang ${nw}?`, async () => {const r = await sb.from('profiles').update({role: nw}).eq('id', USERS[i][4]); if (r.error) return fail(r.error); USERS[i][2] = nw; log('ROLE_CHANGE', USERS[i][0], old + ' → ' + nw); toast('Đã đổi vai trò'); render()}, 'Đổi vai trò')}
     function dlCsv() {const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([CSV_SAMPLE], {type: 'text/csv;charset=utf-8'})); a.download = 'gia-pha-mau.csv'; a.click()}
-    function parseCsv(t) {const r = []; let row = [], c = '', q = 0; t = t.replace(/^\uFEFF/, ''); for (let i = 0; i < t.length; i++) {const ch = t[i]; if (q) {if (ch === '"' && t[i + 1] === '"') {c += '"'; i++} else if (ch === '"') q = 0; else c += ch} else if (ch === '"') q = 1; else if (ch === ',') {row.push(c); c = ''} else if (ch === '\n' || ch === '\r') {if (ch === '\r' && t[i + 1] === '\n') i++; row.push(c); r.push(row); row = []; c = ''} else c += ch} if (c || row.length) {row.push(c); r.push(row)} return r.filter(x => x.some(y => y.trim()))}
+    function parseCsv(t) {const r = []; let row = [], c = '', q = 0; t = t.replace(/^\uFEFF/, ''); const l1 = t.split('\n')[0], dl = l1.split(';').length > l1.split(',').length ? ';' : ','; for (let i = 0; i < t.length; i++) {const ch = t[i]; if (q) {if (ch === '"' && t[i + 1] === '"') {c += '"'; i++} else if (ch === '"') q = 0; else c += ch} else if (ch === '"') q = 1; else if (ch === dl) {row.push(c); c = ''} else if (ch === '\n' || ch === '\r') {if (ch === '\r' && t[i + 1] === '\n') i++; row.push(c); r.push(row); row = []; c = ''} else c += ch} if (c || row.length) {row.push(c); r.push(row)} return r.filter(x => x.some(y => y.trim()))}
+    const AL = {id: 'external_id', ma: 'external_id', ma_so: 'external_id', father_id: 'father_external_id', mother_id: 'mother_external_id', spouse_id: 'spouse_external_id', cha: 'father_external_id', me: 'mother_external_id', name: 'full_name', ho_ten: 'full_name', generation: 'generation_number', doi: 'generation_number', the_he: 'generation_number'};
+    /* Tìm người được tham chiếu: (1) mã external_id trong tệp, (2) mã external_id đã có trong DB, (3) id số của DB. Không phụ thuộc id tự sinh của DB. */
+    function mkRes(rows) {
+      const F = {}, D = {}; rows.forEach(o => {if (o.external_id) F[o.external_id.toLowerCase()] = o}); ppl.forEach(p => {if (p.ext) D[p.ext.trim().toLowerCase()] = p});
+      return ref => {const k = (ref || '').trim().toLowerCase(); if (!k) return null; if (F[k]) return {o: F[k]}; if (D[k]) return {p: D[k]}; const p = /^\d+$/.test(k) ? P(+k) : null; return p ? {p} : null}
+    }
+    const LK = [['father_external_id', 'cha', 'f'], ['mother_external_id', 'mẹ', 'm'], ['spouse_external_id', 'vợ/chồng', 'sp']];
     function readCsv(f) {
       if (!f) return; const rd = new FileReader(); rd.onload = () => {
-        const rows = parseCsv(rd.result), h = rows.shift().map(x => x.trim()), ok = [], err = [], ids = new Set(rows.map(r => r[h.indexOf('external_id')]));
+        const rows = parseCsv(rd.result); if (!rows.length) return toast('Tệp rỗng');
+        const h = rows.shift().map(x => {x = x.trim().toLowerCase().replace(/[\s-]+/g, '_'); return AL[x] || x}), err = [], warn = [], cand = [], seen = new Set();
         rows.forEach((r, i) => {
-          const o = {}; h.forEach((k, j) => o[k] = (r[j] || '').trim()); const n = i + 2;
-          if (!o.full_name) return err.push([n, 'Thiếu họ tên']);
-          if (o.death_date && !/^\d{4}(-\d\d-\d\d)?$/.test(o.death_date)) return err.push([n, 'Ngày mất không hợp lệ: ' + o.death_date]);
-          if (o.birth_date && !/^\d{4}(-(0[0-9]|1[0-2])-([0-2][0-9]|3[01]))?$/.test(o.birth_date)) return err.push([n, 'Ngày sinh không hợp lệ: ' + o.birth_date]);
-          for (const k of ['father_external_id', 'mother_external_id']) if (o[k] && !ids.has(o[k]) && !ppl.some(p => p.ext === o[k])) return err.push([n, 'Không tìm thấy mã ' + o[k] + ' trong tệp hoặc dữ liệu']);
-          ok.push(o)
-        }); S.imp = {ok, err}; render()
+          const o = {}; h.forEach((k, j) => o[k] = (r[j] || '').trim()); o.external_id = o.external_id || ''; o._n = i + 2;
+          if (!o.full_name) return err.push([o._n, 'Thiếu họ tên']);
+          if (o.death_date && !/^\d{4}(-\d\d-\d\d)?$/.test(o.death_date)) return err.push([o._n, 'Ngày mất không hợp lệ: ' + o.death_date]);
+          if (o.birth_date && !/^\d{4}(-(0[0-9]|1[0-2])-([0-2][0-9]|3[01]))?$/.test(o.birth_date)) return err.push([o._n, 'Ngày sinh không hợp lệ: ' + o.birth_date]);
+          const k = o.external_id.toLowerCase(); if (k) {if (seen.has(k)) return err.push([o._n, 'Mã trùng trong tệp: ' + o.external_id]); seen.add(k)}
+          cand.push(o)
+        });
+        const res = mkRes(cand), lk = {f: 0, m: 0, sp: 0}, Dk = new Set(ppl.filter(p => p.ext).map(p => p.ext.toLowerCase())); let upd = 0;
+        cand.forEach(o => {
+          if (o.external_id && Dk.has(o.external_id.toLowerCase())) upd++;
+          for (const [k, t, l] of LK) {
+            if (!o[k]) continue; const q = res(o[k]); if (!q || q.o === o) {warn.push([o._n, `Không tìm thấy mã "${o[k]}" của ${t}: vẫn nhập nhưng chưa liên kết`]); continue} lk[l]++;
+            const pg = q.o ? +q.o.generation_number || 0 : q.p.gen; if (l !== 'sp' && +o.generation_number && pg && +o.generation_number !== pg + 1) warn.push([o._n, `Thế hệ ${o.generation_number} nhưng ${t} thuộc thế hệ ${pg}`])
+          }
+        });
+        S.imp = {ok: cand, err, warn, lk, upd}; render()
       }; rd.readAsText(f, 'utf-8')
     }
     async function doImp() {
-      const ok = S.imp.ok, rows = ok.map(o => ({name: o.full_name, g: o.gender === 'FEMALE' ? 'F' : 'M', bd: o.birth_date || null, dd: o.death_date || null, pl: o.birth_place, job: o.occupation, gen: +o.generation_number || 1, ext: o.external_id}));
-      const r = await sb.from('persons').insert(rows).select(); if (r.error) return fail(r.error); const map = {}; r.data.forEach(x => map[x.ext] = x.id);
-      for (const o of ok) {const f = map[o.father_external_id] || ppl.find(x => o.father_external_id && x.ext === o.father_external_id)?.id, m = map[o.mother_external_id] || ppl.find(x => o.mother_external_id && x.ext === o.mother_external_id)?.id; if (f || m) await sb.from('persons').update({f: f || null, m: m || null}).eq('id', map[o.external_id])}
-      await log('IMPORT', 'CSV', `Nhập ${ok.length} dòng, lỗi ${S.imp.err.length}`); await loadAll(); toast('Đã nhập ' + ok.length + ' thành viên'); S.imp = null; S.atab = 'log'; render()
+      const {ok} = S.imp, res = mkRes(ok), Dm = {}; ppl.forEach(p => {if (p.ext) Dm[p.ext.trim().toLowerCase()] = p});
+      const G = new Map(), gOf = q => q ? (q.o ? G.get(q.o) : q.p.gen) : 0; ok.forEach(o => {const n = +o.generation_number; if (n > 0) G.set(o, n)});
+      for (let i = 0; i < 8; i++)ok.forEach(o => {if (G.has(o)) return; for (const k of ['father_external_id', 'mother_external_id']) {const g = gOf(res(o[k])); if (g) {G.set(o, g + 1); return } } const g = gOf(res(o.spouse_external_id)); if (g) G.set(o, g)});
+      const body = o => ({name: o.full_name, g: o.gender && /^(F|FEMALE|NU|NỮ)$/i.test(o.gender) ? 'F' : 'M', bd: o.birth_date || null, dd: o.death_date || null, pl: o.birth_place || null, job: o.occupation || null, gen: G.get(o) || 1}), ID = new Map(), errs = [];
+      const old = ok.filter(o => o.external_id && Dm[o.external_id.toLowerCase()]), nw = ok.filter(o => !old.includes(o));
+      old.forEach(o => ID.set(o, Dm[o.external_id.toLowerCase()].id));
+      if (nw.length) {const r = await sb.from('persons').insert(nw.map(o => ({...body(o), ext: o.external_id || null}))).select(); if (r.error) return fail(r.error); if (r.data.length !== nw.length) return toast('Lỗi: số dòng trả về không khớp'); nw.forEach((o, i) => ID.set(o, r.data[i].id))}
+      const U = {}, put = (id, k, v) => (U[id] = U[id] || {})[k] = v, cnt = {f: 0, m: 0, sp: 0};
+      old.forEach(o => put(ID.get(o), '__body', body(o)));
+      ok.forEach(o => {const me = ID.get(o); for (const [k, t, l] of LK) {const q = res(o[k]); const id = q ? (q.o ? ID.get(q.o) : q.p.id) : 0; if (!id || id === me) continue; put(me, l, id); cnt[l]++; if (l === 'sp') put(id, 'sp', me)} });
+      const jobs = Object.entries(U).map(([id, u]) => async () => {const {__body, ...lk} = u, r = await sb.from('persons').update({...(__body || {}), ...lk}).eq('id', +id); if (r.error) errs.push(r.error.message)});
+      for (let i = 0; i < jobs.length; i += 10)await Promise.all(jobs.slice(i, i + 10).map(j => j()));
+      const sum = `${nw.length} mới, ${old.length} cập nhật; liên kết ${cnt.f} cha, ${cnt.m} mẹ, ${cnt.sp} vợ/chồng`;
+      await log('IMPORT', 'CSV', sum + (errs.length ? `; ${errs.length} lỗi cập nhật` : '')); await loadAll(); S.imp = null; S.atab = 'log'; render(); toast(errs.length ? 'Có lỗi khi liên kết: ' + errs[0] : 'Đã nhập: ' + sum)
     }
     async function seedSample() {
       const rows = SEED.map(r => ({name: r[1], cn: r[2], g: r[3], bd: DATES[r[0]][0] || null, dd: DATES[r[0]][1] || null, pl: r[6], job: r[7], gen: r[8], bio: r[12], gr: r[13] || null, ext: 'S' + r[0]}));
